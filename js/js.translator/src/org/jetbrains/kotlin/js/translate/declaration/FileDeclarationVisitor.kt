@@ -18,7 +18,6 @@ package org.jetbrains.kotlin.js.translate.declaration
 import com.google.dart.compiler.backend.js.ast.JsExpression
 import com.google.dart.compiler.backend.js.ast.JsFunction
 import com.google.dart.compiler.backend.js.ast.JsName
-import org.jetbrains.kotlin.descriptors.ClassDescriptor
 import org.jetbrains.kotlin.descriptors.FunctionDescriptor
 import org.jetbrains.kotlin.descriptors.PropertyDescriptor
 import org.jetbrains.kotlin.js.translate.context.TranslationContext
@@ -45,11 +44,8 @@ class FileDeclarationVisitor(private val context: TranslationContext) : Abstract
         super.visitProperty(expression, context)
     }
 
-    override fun addClass(descriptor: ClassDescriptor) {
-        context.export(descriptor)
-    }
-
-    override fun addFunction(descriptor: FunctionDescriptor, expression: JsExpression) {
+    override fun addFunction(descriptor: FunctionDescriptor, expression: JsExpression?) {
+        if (expression == null) return
         addFunctionButNotExport(descriptor, expression)
         context.export(descriptor)
     }

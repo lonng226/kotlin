@@ -123,7 +123,7 @@ val DeclarationDescriptorWithVisibility.isEffectivelyPrivateApi: Boolean
 
 val DeclarationDescriptor.isInsidePrivateClass: Boolean
     get() {
-        var parent = containingDeclaration as? ClassDescriptor
+        val parent = containingDeclaration as? ClassDescriptor
         return parent != null && Visibilities.isPrivate(parent.visibility)
     }
 
@@ -194,6 +194,14 @@ fun ValueParameterDescriptor.hasDefaultValue(): Boolean {
             ValueParameterDescriptor::declaresDefaultValue
     )
 }
+
+fun FunctionDescriptor.hasOrInheritsParametersWithDefaultValue(): Boolean = DFS.ifAny(
+        listOf(this),
+        { current -> current.overriddenDescriptors.map { it.original } },
+        { it.hasOwnParametersWithDefaultValue() }
+)
+
+fun FunctionDescriptor.hasOwnParametersWithDefaultValue() = original.valueParameters.any { it.declaresDefaultValue() }
 
 fun Annotated.isRepeatableAnnotation(): Boolean =
         annotations.findAnnotation(KotlinBuiltIns.FQ_NAMES.repeatable) != null

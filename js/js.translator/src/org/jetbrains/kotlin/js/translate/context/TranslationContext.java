@@ -21,7 +21,6 @@ import com.google.dart.compiler.backend.js.ast.metadata.MetadataProperties;
 import com.intellij.psi.PsiElement;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.jetbrains.kotlin.coroutines.CoroutineUtilKt;
 import org.jetbrains.kotlin.descriptors.*;
 import org.jetbrains.kotlin.descriptors.annotations.Annotations;
 import org.jetbrains.kotlin.descriptors.impl.LocalVariableDescriptor;
@@ -144,8 +143,10 @@ public class TranslationContext {
     }
 
     @NotNull
-    public TranslationContext newFunctionBody(@NotNull JsFunction fun, @Nullable AliasingContext aliasingContext,
-            DeclarationDescriptor descriptor) {
+    private TranslationContext newFunctionBody(
+            @NotNull JsFunction fun, @Nullable AliasingContext aliasingContext,
+            DeclarationDescriptor descriptor
+    ) {
         DynamicContext dynamicContext = DynamicContext.newContext(fun.getScope(), fun.getBody());
         if (aliasingContext == null) {
             aliasingContext = this.aliasingContext.inner();
@@ -205,11 +206,13 @@ public class TranslationContext {
 
     @NotNull
     public TranslationContext innerContextWithAliasesForExpressions(@NotNull Map<KtExpression, JsExpression> aliases) {
+        if (aliases.isEmpty()) return this;
         return this.innerWithAliasingContext(aliasingContext.withExpressionsAliased(aliases));
     }
 
     @NotNull
     public TranslationContext innerContextWithDescriptorsAliased(@NotNull Map<DeclarationDescriptor, JsExpression> aliases) {
+        if (aliases.isEmpty()) return this;
         return this.innerWithAliasingContext(aliasingContext.withDescriptorsAliased(aliases));
     }
 
