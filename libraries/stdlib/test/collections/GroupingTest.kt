@@ -10,7 +10,7 @@ class GroupingTest {
 
         fun <T, K> verifyGrouping(grouping: Grouping<T, K>, expectedElements: List<T>, expectedKeys: List<K>) {
             val elements = grouping.elementIterator().asSequence().toList()
-            val keys = elements.map { grouping.keySelector(it) } // TODO: replace with grouping::keySelector when supported in JS
+            val keys = elements.map { grouping.keyOf(it) } // TODO: replace with grouping::keyOf when supported in JS
 
             assertEquals(expectedElements, elements)
             assertEquals(expectedKeys, keys)

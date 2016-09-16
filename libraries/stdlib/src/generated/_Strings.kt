@@ -717,7 +717,7 @@ public inline fun <K, V, M : MutableMap<in K, MutableList<V>>> CharSequence.grou
 public inline fun <K> CharSequence.groupingBy(crossinline keySelector: (Char) -> K): Grouping<Char, K> {
     return object : Grouping<Char, K> {
         override fun elementIterator(): Iterator<Char> = this@groupingBy.iterator()
-        override fun keySelector(element: Char): K = keySelector(element)
+        override fun keyOf(element: Char): K = keySelector(element)
     }
 }
 

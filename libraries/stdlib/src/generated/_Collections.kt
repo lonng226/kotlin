@@ -1197,7 +1197,7 @@ public inline fun <T, K, V, M : MutableMap<in K, MutableList<V>>> Iterable<T>.gr
 public inline fun <T, K> Iterable<T>.groupingBy(crossinline keySelector: (T) -> K): Grouping<T, K> {
     return object : Grouping<T, K> {
         override fun elementIterator(): Iterator<T> = this@groupingBy.iterator()
-        override fun keySelector(element: T): K = keySelector(element)
+        override fun keyOf(element: T): K = keySelector(element)
     }
 }
 

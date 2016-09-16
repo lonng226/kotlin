@@ -7720,7 +7720,7 @@ public inline fun <K, V, M : MutableMap<in K, MutableList<V>>> CharArray.groupBy
 public inline fun <T, K> Array<out T>.groupingBy(crossinline keySelector: (T) -> K): Grouping<T, K> {
     return object : Grouping<T, K> {
         override fun elementIterator(): Iterator<T> = this@groupingBy.iterator()
-        override fun keySelector(element: T): K = keySelector(element)
+        override fun keyOf(element: T): K = keySelector(element)
     }
 }
 

@@ -1,10 +1,12 @@
 package kotlin.collections
 
 /**
- * Represents a source of elements with a [keySelector] function, which can be applied to each element to get its key.
+ * Represents a source of elements with a [keyOf] function, which can be applied to each element to get its key.
  *
- * A [Grouping] structure serves as an intermediate step in group-and-fold operations.
- * It's created by attaching [keySelector] function to a source of values.
+ * A [Grouping] structure serves as an intermediate step in group-and-fold operations:
+ * they group elements by their keys and then fold each group with some aggregating operation.
+ *
+ * It is created by attaching `keySelector: (T) -> K` function to a source of elements.
  * To get an instance of [Grouping] use one of `groupingBy` extension functions:
  * - [Iterable.groupingBy]
  * - [Sequence.groupingBy]
@@ -14,16 +16,16 @@ package kotlin.collections
  * For the list of group-and-fold operations available, see the [extension functions](#extension-functions) for `Grouping`.
  */
 public interface Grouping<T, out K> {
-    /** Returns an [Iterator] which returns the elements from the source. */
+    /** Returns an [Iterator] which iterates through the elements of the source. */
     fun elementIterator(): Iterator<T>
     /** Extracts the key of an [element]. */
-    fun keySelector(element: T): K
+    fun keyOf(element: T): K
 }
 
 /**
  * Groups elements from the [Grouping] source by key and aggregates elements of each group with the specified [operation].
  *
- * The key for each element is provided by the [Grouping.keySelector] function.
+ * The key for each element is provided by the [Grouping.keyOf] function.
  *
  * @param operation function is invoked on each element with the following parameters:
  *  - `key`: the key of a group this element belongs to;
@@ -38,7 +40,7 @@ public inline fun <T, K, R> Grouping<T, K>.aggregate(
 ): Map<K, R> {
     val result = mutableMapOf<K, R>()
     for (e in this.elementIterator()) {
-        val key = keySelector(e)
+        val key = keyOf(e)
         val value = result[key]
         result[key] = operation(key, value, e, value == null && !result.containsKey(key))
     }
@@ -49,7 +51,7 @@ public inline fun <T, K, R> Grouping<T, K>.aggregate(
  * Groups elements from the [Grouping] source by key and aggregates elements of each group with the specified [operation]
  * to the given [destination] map.
  *
- * The key for each element is provided by the [Grouping.keySelector] function.
+ * The key for each element is provided by the [Grouping.keyOf] function.
  *
  * @param operation a function that is invoked on each element with the following parameters:
  *  - `key`: the key of a group this element belongs to;
@@ -67,7 +69,7 @@ public inline fun <T, K, R, M : MutableMap<in K, R>> Grouping<T, K>.aggregateTo(
         operation: (key: K, accumulator: R?, element: T, first: Boolean) -> R
 ): M {
     for (e in this.elementIterator()) {
-        val key = keySelector(e)
+        val key = keyOf(e)
         val acc = destination[key]
         destination[key] = operation(key, acc, e, acc == null && !destination.containsKey(key))
     }

@@ -408,7 +408,7 @@ fun mapping(): List<GenericFunction> {
             """
             return object : Grouping<T, K> {
                 override fun elementIterator(): Iterator<T> = this@groupingBy.iterator()
-                override fun keySelector(element: T): K = keySelector(element)
+                override fun keyOf(element: T): K = keySelector(element)
             }
             """
         }
