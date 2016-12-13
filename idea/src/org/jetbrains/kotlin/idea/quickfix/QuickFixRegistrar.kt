@@ -462,5 +462,7 @@ class QuickFixRegistrar : QuickFixContributor {
         OVERLOADS_WITHOUT_DEFAULT_ARGUMENTS.registerFactory(RemoveAnnotationFix.JvmOverloads)
 
         ErrorsJs.WRONG_EXTERNAL_DECLARATION.registerFactory(MigrateExternalExtensionFix)
+
+        UNSUPPORTED_FEATURE.registerFactory(EnableUnsupportedFeatureFix)
     }
 }
