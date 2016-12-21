@@ -1,4 +1,20 @@
 /*
+ * Copyright 2010-2016 JetBrains s.r.o.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/*
  * Generated file
  * DO NOT EDIT
  * 
@@ -20,22 +36,22 @@ import org.w3c.performance.*
 import org.w3c.workers.*
 import org.w3c.xhr.*
 
-public external open class UIEvent(type: String, eventInitDict: UIEventInit = noImpl /* noImpl */) : Event(type, eventInitDict) {
+public external open class UIEvent(type: String, eventInitDict: UIEventInit = noImpl) : Event(type, eventInitDict) {
     open val view: Window?
     open val detail: Int
 }
 
 public external interface UIEventInit : EventInit {
-    var view: Window? /* null */
+    var view: Window? /* = null */
         get() = noImpl
         set(value) = noImpl
-    var detail: Int? /* 0 */
+    var detail: Int? /* = 0 */
         get() = noImpl
         set(value) = noImpl
 }
 
 @Suppress("NOTHING_TO_INLINE")
-public inline fun UIEventInit(view: Window? = noImpl /* null */, detail: Int? = noImpl /* 0 */, bubbles: Boolean? = noImpl /* false */, cancelable: Boolean? = noImpl /* false */, composed: Boolean? = noImpl /* false */): UIEventInit {
+public inline fun UIEventInit(view: Window? = null, detail: Int? = 0, bubbles: Boolean? = false, cancelable: Boolean? = false, composed: Boolean? = false): UIEventInit {
     val o = js("({})")
 
     o["view"] = view
@@ -47,18 +63,18 @@ public inline fun UIEventInit(view: Window? = noImpl /* null */, detail: Int? = 
     return o
 }
 
-public external open class FocusEvent(type: String, eventInitDict: FocusEventInit = noImpl /* noImpl */) : UIEvent(type, eventInitDict) {
+public external open class FocusEvent(type: String, eventInitDict: FocusEventInit = noImpl) : UIEvent(type, eventInitDict) {
     open val relatedTarget: EventTarget?
 }
 
 public external interface FocusEventInit : UIEventInit {
-    var relatedTarget: EventTarget? /* null */
+    var relatedTarget: EventTarget? /* = null */
         get() = noImpl
         set(value) = noImpl
 }
 
 @Suppress("NOTHING_TO_INLINE")
-public inline fun FocusEventInit(relatedTarget: EventTarget? = noImpl /* null */, view: Window? = noImpl /* null */, detail: Int? = noImpl /* 0 */, bubbles: Boolean? = noImpl /* false */, cancelable: Boolean? = noImpl /* false */, composed: Boolean? = noImpl /* false */): FocusEventInit {
+public inline fun FocusEventInit(relatedTarget: EventTarget? = null, view: Window? = null, detail: Int? = 0, bubbles: Boolean? = false, cancelable: Boolean? = false, composed: Boolean? = false): FocusEventInit {
     val o = js("({})")
 
     o["relatedTarget"] = relatedTarget
@@ -71,7 +87,7 @@ public inline fun FocusEventInit(relatedTarget: EventTarget? = noImpl /* null */
     return o
 }
 
-public external open class MouseEvent(type: String, eventInitDict: MouseEventInit = noImpl /* noImpl */) : UIEvent(type, eventInitDict), UnionElementOrMouseEvent {
+public external open class MouseEvent(type: String, eventInitDict: MouseEventInit = noImpl) : UIEvent(type, eventInitDict), UnionElementOrMouseEvent {
     open val region: String?
     open val screenX: Int
     open val screenY: Int
@@ -92,31 +108,31 @@ public external open class MouseEvent(type: String, eventInitDict: MouseEventIni
 }
 
 public external interface MouseEventInit : EventModifierInit {
-    var screenX: Int? /* 0 */
+    var screenX: Int? /* = 0 */
         get() = noImpl
         set(value) = noImpl
-    var screenY: Int? /* 0 */
+    var screenY: Int? /* = 0 */
         get() = noImpl
         set(value) = noImpl
-    var clientX: Int? /* 0 */
+    var clientX: Int? /* = 0 */
         get() = noImpl
         set(value) = noImpl
-    var clientY: Int? /* 0 */
+    var clientY: Int? /* = 0 */
         get() = noImpl
         set(value) = noImpl
-    var button: Short? /* 0 */
+    var button: Short? /* = 0 */
         get() = noImpl
         set(value) = noImpl
-    var buttons: Short? /* 0 */
+    var buttons: Short? /* = 0 */
         get() = noImpl
         set(value) = noImpl
-    var relatedTarget: EventTarget? /* null */
+    var relatedTarget: EventTarget? /* = null */
         get() = noImpl
         set(value) = noImpl
 }
 
 @Suppress("NOTHING_TO_INLINE")
-public inline fun MouseEventInit(screenX: Int? = noImpl /* 0 */, screenY: Int? = noImpl /* 0 */, clientX: Int? = noImpl /* 0 */, clientY: Int? = noImpl /* 0 */, button: Short? = noImpl /* 0 */, buttons: Short? = noImpl /* 0 */, relatedTarget: EventTarget? = noImpl /* null */, ctrlKey: Boolean? = noImpl /* false */, shiftKey: Boolean? = noImpl /* false */, altKey: Boolean? = noImpl /* false */, metaKey: Boolean? = noImpl /* false */, modifierAltGraph: Boolean? = noImpl /* false */, modifierCapsLock: Boolean? = noImpl /* false */, modifierFn: Boolean? = noImpl /* false */, modifierFnLock: Boolean? = noImpl /* false */, modifierHyper: Boolean? = noImpl /* false */, modifierNumLock: Boolean? = noImpl /* false */, modifierScrollLock: Boolean? = noImpl /* false */, modifierSuper: Boolean? = noImpl /* false */, modifierSymbol: Boolean? = noImpl /* false */, modifierSymbolLock: Boolean? = noImpl /* false */, view: Window? = noImpl /* null */, detail: Int? = noImpl /* 0 */, bubbles: Boolean? = noImpl /* false */, cancelable: Boolean? = noImpl /* false */, composed: Boolean? = noImpl /* false */): MouseEventInit {
+public inline fun MouseEventInit(screenX: Int? = 0, screenY: Int? = 0, clientX: Int? = 0, clientY: Int? = 0, button: Short? = 0, buttons: Short? = 0, relatedTarget: EventTarget? = null, ctrlKey: Boolean? = false, shiftKey: Boolean? = false, altKey: Boolean? = false, metaKey: Boolean? = false, modifierAltGraph: Boolean? = false, modifierCapsLock: Boolean? = false, modifierFn: Boolean? = false, modifierFnLock: Boolean? = false, modifierHyper: Boolean? = false, modifierNumLock: Boolean? = false, modifierScrollLock: Boolean? = false, modifierSuper: Boolean? = false, modifierSymbol: Boolean? = false, modifierSymbolLock: Boolean? = false, view: Window? = null, detail: Int? = 0, bubbles: Boolean? = false, cancelable: Boolean? = false, composed: Boolean? = false): MouseEventInit {
     val o = js("({})")
 
     o["screenX"] = screenX
@@ -150,52 +166,52 @@ public inline fun MouseEventInit(screenX: Int? = noImpl /* 0 */, screenY: Int? =
 }
 
 public external interface EventModifierInit : UIEventInit {
-    var ctrlKey: Boolean? /* false */
+    var ctrlKey: Boolean? /* = false */
         get() = noImpl
         set(value) = noImpl
-    var shiftKey: Boolean? /* false */
+    var shiftKey: Boolean? /* = false */
         get() = noImpl
         set(value) = noImpl
-    var altKey: Boolean? /* false */
+    var altKey: Boolean? /* = false */
         get() = noImpl
         set(value) = noImpl
-    var metaKey: Boolean? /* false */
+    var metaKey: Boolean? /* = false */
         get() = noImpl
         set(value) = noImpl
-    var modifierAltGraph: Boolean? /* false */
+    var modifierAltGraph: Boolean? /* = false */
         get() = noImpl
         set(value) = noImpl
-    var modifierCapsLock: Boolean? /* false */
+    var modifierCapsLock: Boolean? /* = false */
         get() = noImpl
         set(value) = noImpl
-    var modifierFn: Boolean? /* false */
+    var modifierFn: Boolean? /* = false */
         get() = noImpl
         set(value) = noImpl
-    var modifierFnLock: Boolean? /* false */
+    var modifierFnLock: Boolean? /* = false */
         get() = noImpl
         set(value) = noImpl
-    var modifierHyper: Boolean? /* false */
+    var modifierHyper: Boolean? /* = false */
         get() = noImpl
         set(value) = noImpl
-    var modifierNumLock: Boolean? /* false */
+    var modifierNumLock: Boolean? /* = false */
         get() = noImpl
         set(value) = noImpl
-    var modifierScrollLock: Boolean? /* false */
+    var modifierScrollLock: Boolean? /* = false */
         get() = noImpl
         set(value) = noImpl
-    var modifierSuper: Boolean? /* false */
+    var modifierSuper: Boolean? /* = false */
         get() = noImpl
         set(value) = noImpl
-    var modifierSymbol: Boolean? /* false */
+    var modifierSymbol: Boolean? /* = false */
         get() = noImpl
         set(value) = noImpl
-    var modifierSymbolLock: Boolean? /* false */
+    var modifierSymbolLock: Boolean? /* = false */
         get() = noImpl
         set(value) = noImpl
 }
 
 @Suppress("NOTHING_TO_INLINE")
-public inline fun EventModifierInit(ctrlKey: Boolean? = noImpl /* false */, shiftKey: Boolean? = noImpl /* false */, altKey: Boolean? = noImpl /* false */, metaKey: Boolean? = noImpl /* false */, modifierAltGraph: Boolean? = noImpl /* false */, modifierCapsLock: Boolean? = noImpl /* false */, modifierFn: Boolean? = noImpl /* false */, modifierFnLock: Boolean? = noImpl /* false */, modifierHyper: Boolean? = noImpl /* false */, modifierNumLock: Boolean? = noImpl /* false */, modifierScrollLock: Boolean? = noImpl /* false */, modifierSuper: Boolean? = noImpl /* false */, modifierSymbol: Boolean? = noImpl /* false */, modifierSymbolLock: Boolean? = noImpl /* false */, view: Window? = noImpl /* null */, detail: Int? = noImpl /* 0 */, bubbles: Boolean? = noImpl /* false */, cancelable: Boolean? = noImpl /* false */, composed: Boolean? = noImpl /* false */): EventModifierInit {
+public inline fun EventModifierInit(ctrlKey: Boolean? = false, shiftKey: Boolean? = false, altKey: Boolean? = false, metaKey: Boolean? = false, modifierAltGraph: Boolean? = false, modifierCapsLock: Boolean? = false, modifierFn: Boolean? = false, modifierFnLock: Boolean? = false, modifierHyper: Boolean? = false, modifierNumLock: Boolean? = false, modifierScrollLock: Boolean? = false, modifierSuper: Boolean? = false, modifierSymbol: Boolean? = false, modifierSymbolLock: Boolean? = false, view: Window? = null, detail: Int? = 0, bubbles: Boolean? = false, cancelable: Boolean? = false, composed: Boolean? = false): EventModifierInit {
     val o = js("({})")
 
     o["ctrlKey"] = ctrlKey
@@ -221,36 +237,36 @@ public inline fun EventModifierInit(ctrlKey: Boolean? = noImpl /* false */, shif
     return o
 }
 
-public external open class WheelEvent(type: String, eventInitDict: WheelEventInit = noImpl /* noImpl */) : MouseEvent(type, eventInitDict) {
+public external open class WheelEvent(type: String, eventInitDict: WheelEventInit = noImpl) : MouseEvent(type, eventInitDict) {
     open val deltaX: Double
     open val deltaY: Double
     open val deltaZ: Double
     open val deltaMode: Int
 
     companion object {
-        val DOM_DELTA_PIXEL: Int = noImpl /* 0x00 */
-        val DOM_DELTA_LINE: Int = noImpl /* 0x01 */
-        val DOM_DELTA_PAGE: Int = noImpl /* 0x02 */
+        val DOM_DELTA_PIXEL: Int
+        val DOM_DELTA_LINE: Int
+        val DOM_DELTA_PAGE: Int
     }
 }
 
 public external interface WheelEventInit : MouseEventInit {
-    var deltaX: Double? /* 0.0 */
+    var deltaX: Double? /* = 0.0 */
         get() = noImpl
         set(value) = noImpl
-    var deltaY: Double? /* 0.0 */
+    var deltaY: Double? /* = 0.0 */
         get() = noImpl
         set(value) = noImpl
-    var deltaZ: Double? /* 0.0 */
+    var deltaZ: Double? /* = 0.0 */
         get() = noImpl
         set(value) = noImpl
-    var deltaMode: Int? /* 0 */
+    var deltaMode: Int? /* = 0 */
         get() = noImpl
         set(value) = noImpl
 }
 
 @Suppress("NOTHING_TO_INLINE")
-public inline fun WheelEventInit(deltaX: Double? = noImpl /* 0.0 */, deltaY: Double? = noImpl /* 0.0 */, deltaZ: Double? = noImpl /* 0.0 */, deltaMode: Int? = noImpl /* 0 */, screenX: Int? = noImpl /* 0 */, screenY: Int? = noImpl /* 0 */, clientX: Int? = noImpl /* 0 */, clientY: Int? = noImpl /* 0 */, button: Short? = noImpl /* 0 */, buttons: Short? = noImpl /* 0 */, relatedTarget: EventTarget? = noImpl /* null */, ctrlKey: Boolean? = noImpl /* false */, shiftKey: Boolean? = noImpl /* false */, altKey: Boolean? = noImpl /* false */, metaKey: Boolean? = noImpl /* false */, modifierAltGraph: Boolean? = noImpl /* false */, modifierCapsLock: Boolean? = noImpl /* false */, modifierFn: Boolean? = noImpl /* false */, modifierFnLock: Boolean? = noImpl /* false */, modifierHyper: Boolean? = noImpl /* false */, modifierNumLock: Boolean? = noImpl /* false */, modifierScrollLock: Boolean? = noImpl /* false */, modifierSuper: Boolean? = noImpl /* false */, modifierSymbol: Boolean? = noImpl /* false */, modifierSymbolLock: Boolean? = noImpl /* false */, view: Window? = noImpl /* null */, detail: Int? = noImpl /* 0 */, bubbles: Boolean? = noImpl /* false */, cancelable: Boolean? = noImpl /* false */, composed: Boolean? = noImpl /* false */): WheelEventInit {
+public inline fun WheelEventInit(deltaX: Double? = 0.0, deltaY: Double? = 0.0, deltaZ: Double? = 0.0, deltaMode: Int? = 0, screenX: Int? = 0, screenY: Int? = 0, clientX: Int? = 0, clientY: Int? = 0, button: Short? = 0, buttons: Short? = 0, relatedTarget: EventTarget? = null, ctrlKey: Boolean? = false, shiftKey: Boolean? = false, altKey: Boolean? = false, metaKey: Boolean? = false, modifierAltGraph: Boolean? = false, modifierCapsLock: Boolean? = false, modifierFn: Boolean? = false, modifierFnLock: Boolean? = false, modifierHyper: Boolean? = false, modifierNumLock: Boolean? = false, modifierScrollLock: Boolean? = false, modifierSuper: Boolean? = false, modifierSymbol: Boolean? = false, modifierSymbolLock: Boolean? = false, view: Window? = null, detail: Int? = 0, bubbles: Boolean? = false, cancelable: Boolean? = false, composed: Boolean? = false): WheelEventInit {
     val o = js("({})")
 
     o["deltaX"] = deltaX
@@ -287,22 +303,22 @@ public inline fun WheelEventInit(deltaX: Double? = noImpl /* 0.0 */, deltaY: Dou
     return o
 }
 
-public external open class InputEvent(type: String, eventInitDict: InputEventInit = noImpl /* noImpl */) : UIEvent(type, eventInitDict) {
+public external open class InputEvent(type: String, eventInitDict: InputEventInit = noImpl) : UIEvent(type, eventInitDict) {
     open val data: String
     open val isComposing: Boolean
 }
 
 public external interface InputEventInit : UIEventInit {
-    var data: String? /* "" */
+    var data: String? /* = "" */
         get() = noImpl
         set(value) = noImpl
-    var isComposing: Boolean? /* false */
+    var isComposing: Boolean? /* = false */
         get() = noImpl
         set(value) = noImpl
 }
 
 @Suppress("NOTHING_TO_INLINE")
-public inline fun InputEventInit(data: String? = noImpl /* "" */, isComposing: Boolean? = noImpl /* false */, view: Window? = noImpl /* null */, detail: Int? = noImpl /* 0 */, bubbles: Boolean? = noImpl /* false */, cancelable: Boolean? = noImpl /* false */, composed: Boolean? = noImpl /* false */): InputEventInit {
+public inline fun InputEventInit(data: String? = "", isComposing: Boolean? = false, view: Window? = null, detail: Int? = 0, bubbles: Boolean? = false, cancelable: Boolean? = false, composed: Boolean? = false): InputEventInit {
     val o = js("({})")
 
     o["data"] = data
@@ -316,7 +332,7 @@ public inline fun InputEventInit(data: String? = noImpl /* "" */, isComposing: B
     return o
 }
 
-public external open class KeyboardEvent(type: String, eventInitDict: KeyboardEventInit = noImpl /* noImpl */) : UIEvent(type, eventInitDict) {
+public external open class KeyboardEvent(type: String, eventInitDict: KeyboardEventInit = noImpl) : UIEvent(type, eventInitDict) {
     open val key: String
     open val code: String
     open val location: Int
@@ -332,33 +348,33 @@ public external open class KeyboardEvent(type: String, eventInitDict: KeyboardEv
     fun getModifierState(keyArg: String): Boolean
 
     companion object {
-        val DOM_KEY_LOCATION_STANDARD: Int = noImpl /* 0x00 */
-        val DOM_KEY_LOCATION_LEFT: Int = noImpl /* 0x01 */
-        val DOM_KEY_LOCATION_RIGHT: Int = noImpl /* 0x02 */
-        val DOM_KEY_LOCATION_NUMPAD: Int = noImpl /* 0x03 */
+        val DOM_KEY_LOCATION_STANDARD: Int
+        val DOM_KEY_LOCATION_LEFT: Int
+        val DOM_KEY_LOCATION_RIGHT: Int
+        val DOM_KEY_LOCATION_NUMPAD: Int
     }
 }
 
 public external interface KeyboardEventInit : EventModifierInit {
-    var key: String? /* "" */
+    var key: String? /* = "" */
         get() = noImpl
         set(value) = noImpl
-    var code: String? /* "" */
+    var code: String? /* = "" */
         get() = noImpl
         set(value) = noImpl
-    var location: Int? /* 0 */
+    var location: Int? /* = 0 */
         get() = noImpl
         set(value) = noImpl
-    var repeat: Boolean? /* false */
+    var repeat: Boolean? /* = false */
         get() = noImpl
         set(value) = noImpl
-    var isComposing: Boolean? /* false */
+    var isComposing: Boolean? /* = false */
         get() = noImpl
         set(value) = noImpl
 }
 
 @Suppress("NOTHING_TO_INLINE")
-public inline fun KeyboardEventInit(key: String? = noImpl /* "" */, code: String? = noImpl /* "" */, location: Int? = noImpl /* 0 */, repeat: Boolean? = noImpl /* false */, isComposing: Boolean? = noImpl /* false */, ctrlKey: Boolean? = noImpl /* false */, shiftKey: Boolean? = noImpl /* false */, altKey: Boolean? = noImpl /* false */, metaKey: Boolean? = noImpl /* false */, modifierAltGraph: Boolean? = noImpl /* false */, modifierCapsLock: Boolean? = noImpl /* false */, modifierFn: Boolean? = noImpl /* false */, modifierFnLock: Boolean? = noImpl /* false */, modifierHyper: Boolean? = noImpl /* false */, modifierNumLock: Boolean? = noImpl /* false */, modifierScrollLock: Boolean? = noImpl /* false */, modifierSuper: Boolean? = noImpl /* false */, modifierSymbol: Boolean? = noImpl /* false */, modifierSymbolLock: Boolean? = noImpl /* false */, view: Window? = noImpl /* null */, detail: Int? = noImpl /* 0 */, bubbles: Boolean? = noImpl /* false */, cancelable: Boolean? = noImpl /* false */, composed: Boolean? = noImpl /* false */): KeyboardEventInit {
+public inline fun KeyboardEventInit(key: String? = "", code: String? = "", location: Int? = 0, repeat: Boolean? = false, isComposing: Boolean? = false, ctrlKey: Boolean? = false, shiftKey: Boolean? = false, altKey: Boolean? = false, metaKey: Boolean? = false, modifierAltGraph: Boolean? = false, modifierCapsLock: Boolean? = false, modifierFn: Boolean? = false, modifierFnLock: Boolean? = false, modifierHyper: Boolean? = false, modifierNumLock: Boolean? = false, modifierScrollLock: Boolean? = false, modifierSuper: Boolean? = false, modifierSymbol: Boolean? = false, modifierSymbolLock: Boolean? = false, view: Window? = null, detail: Int? = 0, bubbles: Boolean? = false, cancelable: Boolean? = false, composed: Boolean? = false): KeyboardEventInit {
     val o = js("({})")
 
     o["key"] = key
@@ -389,18 +405,18 @@ public inline fun KeyboardEventInit(key: String? = noImpl /* "" */, code: String
     return o
 }
 
-public external open class CompositionEvent(type: String, eventInitDict: CompositionEventInit = noImpl /* noImpl */) : UIEvent(type, eventInitDict) {
+public external open class CompositionEvent(type: String, eventInitDict: CompositionEventInit = noImpl) : UIEvent(type, eventInitDict) {
     open val data: String
 }
 
 public external interface CompositionEventInit : UIEventInit {
-    var data: String? /* "" */
+    var data: String? /* = "" */
         get() = noImpl
         set(value) = noImpl
 }
 
 @Suppress("NOTHING_TO_INLINE")
-public inline fun CompositionEventInit(data: String? = noImpl /* "" */, view: Window? = noImpl /* null */, detail: Int? = noImpl /* 0 */, bubbles: Boolean? = noImpl /* false */, cancelable: Boolean? = noImpl /* false */, composed: Boolean? = noImpl /* false */): CompositionEventInit {
+public inline fun CompositionEventInit(data: String? = "", view: Window? = null, detail: Int? = 0, bubbles: Boolean? = false, cancelable: Boolean? = false, composed: Boolean? = false): CompositionEventInit {
     val o = js("({})")
 
     o["data"] = data
@@ -413,7 +429,7 @@ public inline fun CompositionEventInit(data: String? = noImpl /* "" */, view: Wi
     return o
 }
 
-public external open class Event(type: String, eventInitDict: EventInit = noImpl /* noImpl */) {
+public external open class Event(type: String, eventInitDict: EventInit = noImpl) {
     open val type: String
     open val target: EventTarget?
     open val currentTarget: EventTarget?
@@ -431,18 +447,18 @@ public external open class Event(type: String, eventInitDict: EventInit = noImpl
     fun initEvent(type: String, bubbles: Boolean, cancelable: Boolean): Unit
 
     companion object {
-        val NONE: Short = noImpl /* 0 */
-        val CAPTURING_PHASE: Short = noImpl /* 1 */
-        val AT_TARGET: Short = noImpl /* 2 */
-        val BUBBLING_PHASE: Short = noImpl /* 3 */
+        val NONE: Short
+        val CAPTURING_PHASE: Short
+        val AT_TARGET: Short
+        val BUBBLING_PHASE: Short
     }
 }
 
 public external abstract class EventTarget {
-    fun addEventListener(type: String, callback: EventListener?, options: dynamic = noImpl /* noImpl */): Unit
-    fun addEventListener(type: String, callback: ((Event) -> Unit)?, options: dynamic = noImpl /* noImpl */): Unit
-    fun removeEventListener(type: String, callback: EventListener?, options: dynamic = noImpl /* noImpl */): Unit
-    fun removeEventListener(type: String, callback: ((Event) -> Unit)?, options: dynamic = noImpl /* noImpl */): Unit
+    fun addEventListener(type: String, callback: EventListener?, options: dynamic = noImpl): Unit
+    fun addEventListener(type: String, callback: ((Event) -> Unit)?, options: dynamic = noImpl): Unit
+    fun removeEventListener(type: String, callback: EventListener?, options: dynamic = noImpl): Unit
+    fun removeEventListener(type: String, callback: ((Event) -> Unit)?, options: dynamic = noImpl): Unit
     fun dispatchEvent(event: Event): Boolean
 }
 

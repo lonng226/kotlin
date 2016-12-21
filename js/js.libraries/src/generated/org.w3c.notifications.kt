@@ -1,4 +1,20 @@
 /*
+ * Copyright 2010-2016 JetBrains s.r.o.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/*
  * Generated file
  * DO NOT EDIT
  * 
@@ -20,7 +36,7 @@ import org.w3c.performance.*
 import org.w3c.workers.*
 import org.w3c.xhr.*
 
-public external open class Notification(title: String, options: NotificationOptions = noImpl /* noImpl */) : EventTarget() {
+public external open class Notification(title: String, options: NotificationOptions = noImpl) : EventTarget() {
     var onclick: ((Event) -> dynamic)?
     var onerror: ((Event) -> dynamic)?
     open val title: String
@@ -46,21 +62,21 @@ public external open class Notification(title: String, options: NotificationOpti
     companion object {
         var permission: String
         var maxActions: Int
-        fun requestPermission(deprecatedCallback: (String) -> Unit = noImpl /* noImpl */): dynamic
+        fun requestPermission(deprecatedCallback: (String) -> Unit = noImpl): dynamic
     }
 }
 
 public external interface NotificationOptions {
-    var dir: String? /* "auto" */
+    var dir: String? /* = "auto" */
         get() = noImpl
         set(value) = noImpl
-    var lang: String? /* "" */
+    var lang: String? /* = "" */
         get() = noImpl
         set(value) = noImpl
-    var body: String? /* "" */
+    var body: String? /* = "" */
         get() = noImpl
         set(value) = noImpl
-    var tag: String? /* "" */
+    var tag: String? /* = "" */
         get() = noImpl
         set(value) = noImpl
     var image: String?
@@ -81,31 +97,31 @@ public external interface NotificationOptions {
     var timestamp: Number?
         get() = noImpl
         set(value) = noImpl
-    var renotify: Boolean? /* false */
+    var renotify: Boolean? /* = false */
         get() = noImpl
         set(value) = noImpl
-    var silent: Boolean? /* false */
+    var silent: Boolean? /* = false */
         get() = noImpl
         set(value) = noImpl
-    var noscreen: Boolean? /* false */
+    var noscreen: Boolean? /* = false */
         get() = noImpl
         set(value) = noImpl
-    var requireInteraction: Boolean? /* false */
+    var requireInteraction: Boolean? /* = false */
         get() = noImpl
         set(value) = noImpl
-    var sticky: Boolean? /* false */
+    var sticky: Boolean? /* = false */
         get() = noImpl
         set(value) = noImpl
-    var data: Any? /* null */
+    var data: Any? /* = null */
         get() = noImpl
         set(value) = noImpl
-    var actions: Array<NotificationAction>? /* arrayOf() */
+    var actions: Array<NotificationAction>? /* = arrayOf() */
         get() = noImpl
         set(value) = noImpl
 }
 
 @Suppress("NOTHING_TO_INLINE")
-public inline fun NotificationOptions(dir: String? = noImpl /* "auto" */, lang: String? = noImpl /* "" */, body: String? = noImpl /* "" */, tag: String? = noImpl /* "" */, image: String?, icon: String?, badge: String?, sound: String?, vibrate: dynamic, timestamp: Number?, renotify: Boolean? = noImpl /* false */, silent: Boolean? = noImpl /* false */, noscreen: Boolean? = noImpl /* false */, requireInteraction: Boolean? = noImpl /* false */, sticky: Boolean? = noImpl /* false */, data: Any? = noImpl /* null */, actions: Array<NotificationAction>? = noImpl /* arrayOf() */): NotificationOptions {
+public inline fun NotificationOptions(dir: String? = "auto", lang: String? = "", body: String? = "", tag: String? = "", image: String?, icon: String?, badge: String?, sound: String?, vibrate: dynamic, timestamp: Number?, renotify: Boolean? = false, silent: Boolean? = false, noscreen: Boolean? = false, requireInteraction: Boolean? = false, sticky: Boolean? = false, data: Any? = null, actions: Array<NotificationAction>? = arrayOf()): NotificationOptions {
     val o = js("({})")
 
     o["dir"] = dir
@@ -153,13 +169,13 @@ public inline fun NotificationAction(action: String?, title: String?, icon: Stri
 }
 
 public external interface GetNotificationOptions {
-    var tag: String? /* "" */
+    var tag: String? /* = "" */
         get() = noImpl
         set(value) = noImpl
 }
 
 @Suppress("NOTHING_TO_INLINE")
-public inline fun GetNotificationOptions(tag: String? = noImpl /* "" */): GetNotificationOptions {
+public inline fun GetNotificationOptions(tag: String? = ""): GetNotificationOptions {
     val o = js("({})")
 
     o["tag"] = tag
@@ -176,13 +192,13 @@ public external interface NotificationEventInit : ExtendableEventInit {
     var notification: Notification?
         get() = noImpl
         set(value) = noImpl
-    var action: String? /* "" */
+    var action: String? /* = "" */
         get() = noImpl
         set(value) = noImpl
 }
 
 @Suppress("NOTHING_TO_INLINE")
-public inline fun NotificationEventInit(notification: Notification?, action: String? = noImpl /* "" */, bubbles: Boolean? = noImpl /* false */, cancelable: Boolean? = noImpl /* false */, composed: Boolean? = noImpl /* false */): NotificationEventInit {
+public inline fun NotificationEventInit(notification: Notification?, action: String? = "", bubbles: Boolean? = false, cancelable: Boolean? = false, composed: Boolean? = false): NotificationEventInit {
     val o = js("({})")
 
     o["notification"] = notification

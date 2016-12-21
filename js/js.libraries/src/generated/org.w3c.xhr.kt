@@ -1,4 +1,20 @@
 /*
+ * Copyright 2010-2016 JetBrains s.r.o.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/*
  * Generated file
  * DO NOT EDIT
  * 
@@ -47,54 +63,54 @@ public external open class XMLHttpRequest : XMLHttpRequestEventTarget() {
     open val responseText: String
     open val responseXML: Document?
     fun open(method: String, url: String): Unit
-    fun open(method: String, url: String, async: Boolean, username: String? = noImpl /* null */, password: String? = noImpl /* null */): Unit
+    fun open(method: String, url: String, async: Boolean, username: String? = noImpl, password: String? = noImpl): Unit
     fun setRequestHeader(name: String, value: String): Unit
-    fun send(body: dynamic = noImpl /* null */): Unit
+    fun send(body: dynamic = noImpl): Unit
     fun abort(): Unit
     fun getResponseHeader(name: String): String?
     fun getAllResponseHeaders(): String
     fun overrideMimeType(mime: String): Unit
 
     companion object {
-        val UNSENT: Short = noImpl /* 0 */
-        val OPENED: Short = noImpl /* 1 */
-        val HEADERS_RECEIVED: Short = noImpl /* 2 */
-        val LOADING: Short = noImpl /* 3 */
-        val DONE: Short = noImpl /* 4 */
+        val UNSENT: Short
+        val OPENED: Short
+        val HEADERS_RECEIVED: Short
+        val LOADING: Short
+        val DONE: Short
     }
 }
 
-public external open class FormData(form: HTMLFormElement = noImpl /* noImpl */) {
+public external open class FormData(form: HTMLFormElement = noImpl) {
     fun append(name: String, value: String): Unit
-    fun append(name: String, value: Blob, filename: String = noImpl /* noImpl */): Unit
+    fun append(name: String, value: Blob, filename: String = noImpl): Unit
     fun delete(name: String): Unit
     fun get(name: String): dynamic
     fun getAll(name: String): Array<dynamic>
     fun has(name: String): Boolean
     fun set(name: String, value: String): Unit
-    fun set(name: String, value: Blob, filename: String = noImpl /* noImpl */): Unit
+    fun set(name: String, value: Blob, filename: String = noImpl): Unit
 }
 
-public external open class ProgressEvent(type: String, eventInitDict: ProgressEventInit = noImpl /* noImpl */) : Event(type, eventInitDict) {
+public external open class ProgressEvent(type: String, eventInitDict: ProgressEventInit = noImpl) : Event(type, eventInitDict) {
     open val lengthComputable: Boolean
     open val loaded: Int
     open val total: Int
 }
 
 public external interface ProgressEventInit : EventInit {
-    var lengthComputable: Boolean? /* false */
+    var lengthComputable: Boolean? /* = false */
         get() = noImpl
         set(value) = noImpl
-    var loaded: Int? /* 0 */
+    var loaded: Int? /* = 0 */
         get() = noImpl
         set(value) = noImpl
-    var total: Int? /* 0 */
+    var total: Int? /* = 0 */
         get() = noImpl
         set(value) = noImpl
 }
 
 @Suppress("NOTHING_TO_INLINE")
-public inline fun ProgressEventInit(lengthComputable: Boolean? = noImpl /* false */, loaded: Int? = noImpl /* 0 */, total: Int? = noImpl /* 0 */, bubbles: Boolean? = noImpl /* false */, cancelable: Boolean? = noImpl /* false */, composed: Boolean? = noImpl /* false */): ProgressEventInit {
+public inline fun ProgressEventInit(lengthComputable: Boolean? = false, loaded: Int? = 0, total: Int? = 0, bubbles: Boolean? = false, cancelable: Boolean? = false, composed: Boolean? = false): ProgressEventInit {
     val o = js("({})")
 
     o["lengthComputable"] = lengthComputable

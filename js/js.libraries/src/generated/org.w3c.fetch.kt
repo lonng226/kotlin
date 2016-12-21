@@ -1,4 +1,20 @@
 /*
+ * Copyright 2010-2016 JetBrains s.r.o.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/*
  * Generated file
  * DO NOT EDIT
  * 
@@ -20,7 +36,7 @@ import org.w3c.performance.*
 import org.w3c.workers.*
 import org.w3c.xhr.*
 
-public external open class Headers(init: dynamic = noImpl /* noImpl */) {
+public external open class Headers(init: dynamic = noImpl) {
     fun append(name: String, value: String): Unit
     fun delete(name: String): Unit
     fun get(name: String): String?
@@ -37,7 +53,7 @@ public external interface Body {
     fun text(): dynamic
 }
 
-public external open class Request(input: dynamic, init: RequestInit = noImpl /* noImpl */) : Body {
+public external open class Request(input: dynamic, init: RequestInit = noImpl) : Body {
     open val method: String
     open val url: String
     open val headers: Headers
@@ -119,7 +135,7 @@ public inline fun RequestInit(method: String?, headers: dynamic, body: dynamic, 
     return o
 }
 
-public external open class Response(body: dynamic = noImpl /* null */, init: ResponseInit = noImpl /* noImpl */) : Body {
+public external open class Response(body: dynamic = noImpl, init: ResponseInit = noImpl) : Body {
     open val type: String
     open val url: String
     open val redirected: Boolean
@@ -139,15 +155,15 @@ public external open class Response(body: dynamic = noImpl /* null */, init: Res
 
     companion object {
         fun error(): Response
-        fun redirect(url: String, status: Short = noImpl /* 302 */): Response
+        fun redirect(url: String, status: Short = noImpl): Response
     }
 }
 
 public external interface ResponseInit {
-    var status: Short? /* 200 */
+    var status: Short? /* = 200 */
         get() = noImpl
         set(value) = noImpl
-    var statusText: String? /* "OK" */
+    var statusText: String? /* = "OK" */
         get() = noImpl
         set(value) = noImpl
     var headers: dynamic
@@ -156,7 +172,7 @@ public external interface ResponseInit {
 }
 
 @Suppress("NOTHING_TO_INLINE")
-public inline fun ResponseInit(status: Short? = noImpl /* 200 */, statusText: String? = noImpl /* "OK" */, headers: dynamic): ResponseInit {
+public inline fun ResponseInit(status: Short? = 200, statusText: String? = "OK", headers: dynamic): ResponseInit {
     val o = js("({})")
 
     o["status"] = status

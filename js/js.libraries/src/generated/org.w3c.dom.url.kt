@@ -1,4 +1,20 @@
 /*
+ * Copyright 2010-2016 JetBrains s.r.o.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/*
  * Generated file
  * DO NOT EDIT
  * 
@@ -20,7 +36,7 @@ import org.w3c.performance.*
 import org.w3c.workers.*
 import org.w3c.xhr.*
 
-public external open class URL(url: String, base: String = noImpl /* noImpl */) {
+public external open class URL(url: String, base: String = noImpl) {
     var href: String
     open val origin: String
     var protocol: String
@@ -43,7 +59,7 @@ public external open class URL(url: String, base: String = noImpl /* noImpl */) 
     }
 }
 
-public external open class URLSearchParams(init: dynamic = noImpl /* "" */) {
+public external open class URLSearchParams(init: dynamic = noImpl) {
     fun append(name: String, value: String): Unit
     fun delete(name: String): Unit
     fun get(name: String): String?

@@ -1,4 +1,20 @@
 /*
+ * Copyright 2010-2016 JetBrains s.r.o.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/*
  * Generated file
  * DO NOT EDIT
  * 
@@ -30,22 +46,22 @@ public external abstract class SVGElement : Element(), ElementCSSInlineStyle, Gl
 }
 
 public external interface SVGBoundingBoxOptions {
-    var fill: Boolean? /* true */
+    var fill: Boolean? /* = true */
         get() = noImpl
         set(value) = noImpl
-    var stroke: Boolean? /* false */
+    var stroke: Boolean? /* = false */
         get() = noImpl
         set(value) = noImpl
-    var markers: Boolean? /* false */
+    var markers: Boolean? /* = false */
         get() = noImpl
         set(value) = noImpl
-    var clipped: Boolean? /* false */
+    var clipped: Boolean? /* = false */
         get() = noImpl
         set(value) = noImpl
 }
 
 @Suppress("NOTHING_TO_INLINE")
-public inline fun SVGBoundingBoxOptions(fill: Boolean? = noImpl /* true */, stroke: Boolean? = noImpl /* false */, markers: Boolean? = noImpl /* false */, clipped: Boolean? = noImpl /* false */): SVGBoundingBoxOptions {
+public inline fun SVGBoundingBoxOptions(fill: Boolean? = true, stroke: Boolean? = false, markers: Boolean? = false, clipped: Boolean? = false): SVGBoundingBoxOptions {
     val o = js("({})")
 
     o["fill"] = fill
@@ -58,7 +74,7 @@ public inline fun SVGBoundingBoxOptions(fill: Boolean? = noImpl /* true */, stro
 
 public external abstract class SVGGraphicsElement : SVGElement(), SVGTests {
     open val transform: SVGAnimatedTransformList
-    fun getBBox(options: SVGBoundingBoxOptions = noImpl /* noImpl */): DOMRect
+    fun getBBox(options: SVGBoundingBoxOptions = noImpl): DOMRect
     fun getCTM(): DOMMatrix?
     fun getScreenCTM(): DOMMatrix?
 }
@@ -84,17 +100,17 @@ public external abstract class SVGLength {
     fun convertToSpecifiedUnits(unitType: Short): Unit
 
     companion object {
-        val SVG_LENGTHTYPE_UNKNOWN: Short = noImpl /* 0 */
-        val SVG_LENGTHTYPE_NUMBER: Short = noImpl /* 1 */
-        val SVG_LENGTHTYPE_PERCENTAGE: Short = noImpl /* 2 */
-        val SVG_LENGTHTYPE_EMS: Short = noImpl /* 3 */
-        val SVG_LENGTHTYPE_EXS: Short = noImpl /* 4 */
-        val SVG_LENGTHTYPE_PX: Short = noImpl /* 5 */
-        val SVG_LENGTHTYPE_CM: Short = noImpl /* 6 */
-        val SVG_LENGTHTYPE_MM: Short = noImpl /* 7 */
-        val SVG_LENGTHTYPE_IN: Short = noImpl /* 8 */
-        val SVG_LENGTHTYPE_PT: Short = noImpl /* 9 */
-        val SVG_LENGTHTYPE_PC: Short = noImpl /* 10 */
+        val SVG_LENGTHTYPE_UNKNOWN: Short
+        val SVG_LENGTHTYPE_NUMBER: Short
+        val SVG_LENGTHTYPE_PERCENTAGE: Short
+        val SVG_LENGTHTYPE_EMS: Short
+        val SVG_LENGTHTYPE_EXS: Short
+        val SVG_LENGTHTYPE_PX: Short
+        val SVG_LENGTHTYPE_CM: Short
+        val SVG_LENGTHTYPE_MM: Short
+        val SVG_LENGTHTYPE_IN: Short
+        val SVG_LENGTHTYPE_PT: Short
+        val SVG_LENGTHTYPE_PC: Short
     }
 }
 
@@ -107,11 +123,11 @@ public external abstract class SVGAngle {
     fun convertToSpecifiedUnits(unitType: Short): Unit
 
     companion object {
-        val SVG_ANGLETYPE_UNKNOWN: Short = noImpl /* 0 */
-        val SVG_ANGLETYPE_UNSPECIFIED: Short = noImpl /* 1 */
-        val SVG_ANGLETYPE_DEG: Short = noImpl /* 2 */
-        val SVG_ANGLETYPE_RAD: Short = noImpl /* 3 */
-        val SVG_ANGLETYPE_GRAD: Short = noImpl /* 4 */
+        val SVG_ANGLETYPE_UNKNOWN: Short
+        val SVG_ANGLETYPE_UNSPECIFIED: Short
+        val SVG_ANGLETYPE_DEG: Short
+        val SVG_ANGLETYPE_RAD: Short
+        val SVG_ANGLETYPE_GRAD: Short
     }
 }
 
@@ -232,9 +248,9 @@ public external abstract class SVGStringList {
 public external interface SVGUnitTypes {
 
     companion object {
-        val SVG_UNIT_TYPE_UNKNOWN: Short = noImpl /* 0 */
-        val SVG_UNIT_TYPE_USERSPACEONUSE: Short = noImpl /* 1 */
-        val SVG_UNIT_TYPE_OBJECTBOUNDINGBOX: Short = noImpl /* 2 */
+        val SVG_UNIT_TYPE_UNKNOWN: Short
+        val SVG_UNIT_TYPE_USERSPACEONUSE: Short
+        val SVG_UNIT_TYPE_OBJECTBOUNDINGBOX: Short
     }
 }
 
@@ -252,9 +268,9 @@ public external interface SVGZoomAndPan {
     var zoomAndPan: Short
 
     companion object {
-        val SVG_ZOOMANDPAN_UNKNOWN: Short = noImpl /* 0 */
-        val SVG_ZOOMANDPAN_DISABLE: Short = noImpl /* 1 */
-        val SVG_ZOOMANDPAN_MAGNIFY: Short = noImpl /* 2 */
+        val SVG_ZOOMANDPAN_UNKNOWN: Short
+        val SVG_ZOOMANDPAN_DISABLE: Short
+        val SVG_ZOOMANDPAN_MAGNIFY: Short
     }
 }
 
@@ -289,9 +305,9 @@ public external abstract class SVGSVGElement : SVGGraphicsElement(), SVGFitToVie
     fun forceRedraw(): Unit
 
     companion object {
-        val SVG_ZOOMANDPAN_UNKNOWN: Short = noImpl /* 0 */
-        val SVG_ZOOMANDPAN_DISABLE: Short = noImpl /* 1 */
-        val SVG_ZOOMANDPAN_MAGNIFY: Short = noImpl /* 2 */
+        val SVG_ZOOMANDPAN_UNKNOWN: Short
+        val SVG_ZOOMANDPAN_DISABLE: Short
+        val SVG_ZOOMANDPAN_MAGNIFY: Short
     }
 }
 
@@ -367,13 +383,13 @@ public external abstract class SVGTransform {
     fun setSkewY(angle: Float): Unit
 
     companion object {
-        val SVG_TRANSFORM_UNKNOWN: Short = noImpl /* 0 */
-        val SVG_TRANSFORM_MATRIX: Short = noImpl /* 1 */
-        val SVG_TRANSFORM_TRANSLATE: Short = noImpl /* 2 */
-        val SVG_TRANSFORM_SCALE: Short = noImpl /* 3 */
-        val SVG_TRANSFORM_ROTATE: Short = noImpl /* 4 */
-        val SVG_TRANSFORM_SKEWX: Short = noImpl /* 5 */
-        val SVG_TRANSFORM_SKEWY: Short = noImpl /* 6 */
+        val SVG_TRANSFORM_UNKNOWN: Short
+        val SVG_TRANSFORM_MATRIX: Short
+        val SVG_TRANSFORM_TRANSLATE: Short
+        val SVG_TRANSFORM_SCALE: Short
+        val SVG_TRANSFORM_ROTATE: Short
+        val SVG_TRANSFORM_SKEWX: Short
+        val SVG_TRANSFORM_SKEWY: Short
     }
 }
 
@@ -405,20 +421,20 @@ public external abstract class SVGPreserveAspectRatio {
     open var meetOrSlice: Short
 
     companion object {
-        val SVG_PRESERVEASPECTRATIO_UNKNOWN: Short = noImpl /* 0 */
-        val SVG_PRESERVEASPECTRATIO_NONE: Short = noImpl /* 1 */
-        val SVG_PRESERVEASPECTRATIO_XMINYMIN: Short = noImpl /* 2 */
-        val SVG_PRESERVEASPECTRATIO_XMIDYMIN: Short = noImpl /* 3 */
-        val SVG_PRESERVEASPECTRATIO_XMAXYMIN: Short = noImpl /* 4 */
-        val SVG_PRESERVEASPECTRATIO_XMINYMID: Short = noImpl /* 5 */
-        val SVG_PRESERVEASPECTRATIO_XMIDYMID: Short = noImpl /* 6 */
-        val SVG_PRESERVEASPECTRATIO_XMAXYMID: Short = noImpl /* 7 */
-        val SVG_PRESERVEASPECTRATIO_XMINYMAX: Short = noImpl /* 8 */
-        val SVG_PRESERVEASPECTRATIO_XMIDYMAX: Short = noImpl /* 9 */
-        val SVG_PRESERVEASPECTRATIO_XMAXYMAX: Short = noImpl /* 10 */
-        val SVG_MEETORSLICE_UNKNOWN: Short = noImpl /* 0 */
-        val SVG_MEETORSLICE_MEET: Short = noImpl /* 1 */
-        val SVG_MEETORSLICE_SLICE: Short = noImpl /* 2 */
+        val SVG_PRESERVEASPECTRATIO_UNKNOWN: Short
+        val SVG_PRESERVEASPECTRATIO_NONE: Short
+        val SVG_PRESERVEASPECTRATIO_XMINYMIN: Short
+        val SVG_PRESERVEASPECTRATIO_XMIDYMIN: Short
+        val SVG_PRESERVEASPECTRATIO_XMAXYMIN: Short
+        val SVG_PRESERVEASPECTRATIO_XMINYMID: Short
+        val SVG_PRESERVEASPECTRATIO_XMIDYMID: Short
+        val SVG_PRESERVEASPECTRATIO_XMAXYMID: Short
+        val SVG_PRESERVEASPECTRATIO_XMINYMAX: Short
+        val SVG_PRESERVEASPECTRATIO_XMIDYMAX: Short
+        val SVG_PRESERVEASPECTRATIO_XMAXYMAX: Short
+        val SVG_MEETORSLICE_UNKNOWN: Short
+        val SVG_MEETORSLICE_MEET: Short
+        val SVG_MEETORSLICE_SLICE: Short
     }
 }
 
@@ -503,9 +519,9 @@ public external abstract class SVGTextContentElement : SVGGraphicsElement() {
     fun selectSubString(charnum: Int, nchars: Int): Unit
 
     companion object {
-        val LENGTHADJUST_UNKNOWN: Short = noImpl /* 0 */
-        val LENGTHADJUST_SPACING: Short = noImpl /* 1 */
-        val LENGTHADJUST_SPACINGANDGLYPHS: Short = noImpl /* 2 */
+        val LENGTHADJUST_UNKNOWN: Short
+        val LENGTHADJUST_SPACING: Short
+        val LENGTHADJUST_SPACINGANDGLYPHS: Short
     }
 }
 
@@ -529,12 +545,12 @@ public external abstract class SVGTextPathElement : SVGTextContentElement(), SVG
     open val spacing: SVGAnimatedEnumeration
 
     companion object {
-        val TEXTPATH_METHODTYPE_UNKNOWN: Short = noImpl /* 0 */
-        val TEXTPATH_METHODTYPE_ALIGN: Short = noImpl /* 1 */
-        val TEXTPATH_METHODTYPE_STRETCH: Short = noImpl /* 2 */
-        val TEXTPATH_SPACINGTYPE_UNKNOWN: Short = noImpl /* 0 */
-        val TEXTPATH_SPACINGTYPE_AUTO: Short = noImpl /* 1 */
-        val TEXTPATH_SPACINGTYPE_EXACT: Short = noImpl /* 2 */
+        val TEXTPATH_METHODTYPE_UNKNOWN: Short
+        val TEXTPATH_METHODTYPE_ALIGN: Short
+        val TEXTPATH_METHODTYPE_STRETCH: Short
+        val TEXTPATH_SPACINGTYPE_UNKNOWN: Short
+        val TEXTPATH_SPACINGTYPE_AUTO: Short
+        val TEXTPATH_SPACINGTYPE_EXACT: Short
     }
 }
 
@@ -567,12 +583,12 @@ public external abstract class SVGMarkerElement : SVGElement(), SVGFitToViewBox 
     fun setOrientToAngle(angle: SVGAngle): Unit
 
     companion object {
-        val SVG_MARKERUNITS_UNKNOWN: Short = noImpl /* 0 */
-        val SVG_MARKERUNITS_USERSPACEONUSE: Short = noImpl /* 1 */
-        val SVG_MARKERUNITS_STROKEWIDTH: Short = noImpl /* 2 */
-        val SVG_MARKER_ORIENT_UNKNOWN: Short = noImpl /* 0 */
-        val SVG_MARKER_ORIENT_AUTO: Short = noImpl /* 1 */
-        val SVG_MARKER_ORIENT_ANGLE: Short = noImpl /* 2 */
+        val SVG_MARKERUNITS_UNKNOWN: Short
+        val SVG_MARKERUNITS_USERSPACEONUSE: Short
+        val SVG_MARKERUNITS_STROKEWIDTH: Short
+        val SVG_MARKER_ORIENT_UNKNOWN: Short
+        val SVG_MARKER_ORIENT_AUTO: Short
+        val SVG_MARKER_ORIENT_ANGLE: Short
     }
 }
 
@@ -585,13 +601,13 @@ public external abstract class SVGGradientElement : SVGElement(), SVGURIReferenc
     open val spreadMethod: SVGAnimatedEnumeration
 
     companion object {
-        val SVG_SPREADMETHOD_UNKNOWN: Short = noImpl /* 0 */
-        val SVG_SPREADMETHOD_PAD: Short = noImpl /* 1 */
-        val SVG_SPREADMETHOD_REFLECT: Short = noImpl /* 2 */
-        val SVG_SPREADMETHOD_REPEAT: Short = noImpl /* 3 */
-        val SVG_UNIT_TYPE_UNKNOWN: Short = noImpl /* 0 */
-        val SVG_UNIT_TYPE_USERSPACEONUSE: Short = noImpl /* 1 */
-        val SVG_UNIT_TYPE_OBJECTBOUNDINGBOX: Short = noImpl /* 2 */
+        val SVG_SPREADMETHOD_UNKNOWN: Short
+        val SVG_SPREADMETHOD_PAD: Short
+        val SVG_SPREADMETHOD_REFLECT: Short
+        val SVG_SPREADMETHOD_REPEAT: Short
+        val SVG_UNIT_TYPE_UNKNOWN: Short
+        val SVG_UNIT_TYPE_USERSPACEONUSE: Short
+        val SVG_UNIT_TYPE_OBJECTBOUNDINGBOX: Short
     }
 }
 
@@ -634,9 +650,9 @@ public external abstract class SVGPatternElement : SVGElement(), SVGFitToViewBox
     open val height: SVGAnimatedLength
 
     companion object {
-        val SVG_UNIT_TYPE_UNKNOWN: Short = noImpl /* 0 */
-        val SVG_UNIT_TYPE_USERSPACEONUSE: Short = noImpl /* 1 */
-        val SVG_UNIT_TYPE_OBJECTBOUNDINGBOX: Short = noImpl /* 2 */
+        val SVG_UNIT_TYPE_UNKNOWN: Short
+        val SVG_UNIT_TYPE_USERSPACEONUSE: Short
+        val SVG_UNIT_TYPE_OBJECTBOUNDINGBOX: Short
     }
 }
 
@@ -668,9 +684,9 @@ public external abstract class SVGAElement : SVGGraphicsElement(), SVGURIReferen
 public external abstract class SVGViewElement : SVGElement(), SVGFitToViewBox, SVGZoomAndPan {
 
     companion object {
-        val SVG_ZOOMANDPAN_UNKNOWN: Short = noImpl /* 0 */
-        val SVG_ZOOMANDPAN_DISABLE: Short = noImpl /* 1 */
-        val SVG_ZOOMANDPAN_MAGNIFY: Short = noImpl /* 2 */
+        val SVG_ZOOMANDPAN_UNKNOWN: Short
+        val SVG_ZOOMANDPAN_DISABLE: Short
+        val SVG_ZOOMANDPAN_MAGNIFY: Short
     }
 }
 

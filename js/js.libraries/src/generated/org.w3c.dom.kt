@@ -1,4 +1,20 @@
 /*
+ * Copyright 2010-2016 JetBrains s.r.o.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/*
  * Generated file
  * DO NOT EDIT
  * 
@@ -141,13 +157,13 @@ public external open class Document : Node(), GlobalEventHandlers, DocumentAndEl
     @nativeGetter
     operator fun get(name: String): dynamic
     fun getElementsByName(elementName: String): NodeList
-    fun open(type: String = noImpl /* "text/html" */, replace: String = noImpl /* "" */): Document
+    fun open(type: String = noImpl, replace: String = noImpl): Document
     fun open(url: String, name: String, features: String): Window
     fun close(): Unit
     fun write(vararg text: String): Unit
     fun writeln(vararg text: String): Unit
     fun hasFocus(): Boolean
-    fun execCommand(commandId: String, showUI: Boolean = noImpl /* false */, value: String = noImpl /* "" */): Boolean
+    fun execCommand(commandId: String, showUI: Boolean = noImpl, value: String = noImpl): Boolean
     fun queryCommandEnabled(commandId: String): Boolean
     fun queryCommandIndeterm(commandId: String): Boolean
     fun queryCommandState(commandId: String): Boolean
@@ -159,23 +175,23 @@ public external open class Document : Node(), GlobalEventHandlers, DocumentAndEl
     fun getElementsByTagName(qualifiedName: String): HTMLCollection
     fun getElementsByTagNameNS(namespace: String?, localName: String): HTMLCollection
     fun getElementsByClassName(classNames: String): HTMLCollection
-    fun createElement(localName: String, options: ElementCreationOptions = noImpl /* noImpl */): Element
-    fun createElementNS(namespace: String?, qualifiedName: String, options: ElementCreationOptions = noImpl /* noImpl */): Element
+    fun createElement(localName: String, options: ElementCreationOptions = noImpl): Element
+    fun createElementNS(namespace: String?, qualifiedName: String, options: ElementCreationOptions = noImpl): Element
     fun createDocumentFragment(): DocumentFragment
     fun createTextNode(data: String): Text
     fun createCDATASection(data: String): CDATASection
     fun createComment(data: String): Comment
     fun createProcessingInstruction(target: String, data: String): ProcessingInstruction
-    fun importNode(node: Node, deep: Boolean = noImpl /* false */): Node
+    fun importNode(node: Node, deep: Boolean = noImpl): Node
     fun adoptNode(node: Node): Node
     fun createAttribute(localName: String): Attr
     fun createAttributeNS(namespace: String?, qualifiedName: String): Attr
     fun createEvent(interface_: String): Event
     fun createRange(): Range
-    fun createNodeIterator(root: Node, whatToShow: Int = noImpl /* noImpl */, filter: NodeFilter? = noImpl /* null */): NodeIterator
-    fun createNodeIterator(root: Node, whatToShow: Int = noImpl /* noImpl */, filter: ((Node) -> Short)? = noImpl /* null */): NodeIterator
-    fun createTreeWalker(root: Node, whatToShow: Int = noImpl /* noImpl */, filter: NodeFilter? = noImpl /* null */): TreeWalker
-    fun createTreeWalker(root: Node, whatToShow: Int = noImpl /* noImpl */, filter: ((Node) -> Short)? = noImpl /* null */): TreeWalker
+    fun createNodeIterator(root: Node, whatToShow: Int = noImpl, filter: NodeFilter? = noImpl): NodeIterator
+    fun createNodeIterator(root: Node, whatToShow: Int = noImpl, filter: ((Node) -> Short)? = noImpl): NodeIterator
+    fun createTreeWalker(root: Node, whatToShow: Int = noImpl, filter: NodeFilter? = noImpl): TreeWalker
+    fun createTreeWalker(root: Node, whatToShow: Int = noImpl, filter: ((Node) -> Short)? = noImpl): TreeWalker
     fun elementFromPoint(x: Double, y: Double): Element?
     fun elementsFromPoint(x: Double, y: Double): Array<Element>
     fun caretPositionFromPoint(x: Double, y: Double): CaretPosition?
@@ -184,10 +200,10 @@ public external open class Document : Node(), GlobalEventHandlers, DocumentAndEl
     override fun append(vararg nodes: dynamic): Unit
     override fun querySelector(selectors: String): Element?
     override fun querySelectorAll(selectors: String): NodeList
-    override fun getBoxQuads(options: BoxQuadOptions /* noImpl */): Array<DOMQuad>
-    override fun convertQuadFromNode(quad: dynamic, from: dynamic, options: ConvertCoordinateOptions /* noImpl */): DOMQuad
-    override fun convertRectFromNode(rect: DOMRectReadOnly, from: dynamic, options: ConvertCoordinateOptions /* noImpl */): DOMQuad
-    override fun convertPointFromNode(point: DOMPointInit, from: dynamic, options: ConvertCoordinateOptions /* noImpl */): DOMPoint
+    override fun getBoxQuads(options: BoxQuadOptions /* = noImpl */): Array<DOMQuad>
+    override fun convertQuadFromNode(quad: dynamic, from: dynamic, options: ConvertCoordinateOptions /* = noImpl */): DOMQuad
+    override fun convertRectFromNode(rect: DOMRectReadOnly, from: dynamic, options: ConvertCoordinateOptions /* = noImpl */): DOMQuad
+    override fun convertPointFromNode(point: DOMPointInit, from: dynamic, options: ConvertCoordinateOptions /* = noImpl */): DOMPoint
 }
 
 public external abstract class Window : EventTarget(), GlobalEventHandlers, WindowEventHandlers, WindowOrWorkerGlobalScope, WindowSessionStorage, WindowLocalStorage, GlobalPerformance, UnionMessagePortOrWindow {
@@ -231,17 +247,17 @@ public external abstract class Window : EventTarget(), GlobalEventHandlers, Wind
     fun stop(): Unit
     fun focus(): Unit
     fun blur(): Unit
-    fun open(url: String = noImpl /* "about:blank" */, target: String = noImpl /* "_blank" */, features: String = noImpl /* "" */): Window?
+    fun open(url: String = noImpl, target: String = noImpl, features: String = noImpl): Window?
     @nativeGetter
     operator fun get(name: String): dynamic
     fun alert(): Unit
     fun alert(message: String): Unit
-    fun confirm(message: String = noImpl /* "" */): Boolean
-    fun prompt(message: String = noImpl /* "" */, default: String = noImpl /* "" */): String?
+    fun confirm(message: String = noImpl): Boolean
+    fun prompt(message: String = noImpl, default: String = noImpl): String?
     fun print(): Unit
     fun requestAnimationFrame(callback: (Double) -> Unit): Int
     fun cancelAnimationFrame(handle: Int): Unit
-    fun postMessage(message: Any?, targetOrigin: String, transfer: Array<dynamic> = noImpl /* arrayOf() */): Unit
+    fun postMessage(message: Any?, targetOrigin: String, transfer: Array<dynamic> = noImpl): Unit
     fun captureEvents(): Unit
     fun releaseEvents(): Unit
     fun matchMedia(query: String): MediaQueryList
@@ -249,13 +265,13 @@ public external abstract class Window : EventTarget(), GlobalEventHandlers, Wind
     fun moveBy(x: Int, y: Int): Unit
     fun resizeTo(x: Int, y: Int): Unit
     fun resizeBy(x: Int, y: Int): Unit
-    fun scroll(options: ScrollToOptions = noImpl /* noImpl */): Unit
+    fun scroll(options: ScrollToOptions = noImpl): Unit
     fun scroll(x: Double, y: Double): Unit
-    fun scrollTo(options: ScrollToOptions = noImpl /* noImpl */): Unit
+    fun scrollTo(options: ScrollToOptions = noImpl): Unit
     fun scrollTo(x: Double, y: Double): Unit
-    fun scrollBy(options: ScrollToOptions = noImpl /* noImpl */): Unit
+    fun scrollBy(options: ScrollToOptions = noImpl): Unit
     fun scrollBy(x: Double, y: Double): Unit
-    fun getComputedStyle(elt: Element, pseudoElt: String? = noImpl /* noImpl */): CSSStyleDeclaration
+    fun getComputedStyle(elt: Element, pseudoElt: String? = noImpl): CSSStyleDeclaration
 }
 
 public external abstract class HTMLAllCollection {
@@ -265,7 +281,7 @@ public external abstract class HTMLAllCollection {
 //    fun namedItem(name: String): UnionElementOrHTMLCollection?
 //    @nativeGetter
 //    operator fun get(name: String): UnionElementOrHTMLCollection?
-    fun item(nameOrIndex: String = noImpl /* noImpl */): UnionElementOrHTMLCollection?
+    fun item(nameOrIndex: String = noImpl): UnionElementOrHTMLCollection?
 }
 
 public external abstract class HTMLFormControlsCollection : HTMLCollection() {
@@ -283,7 +299,7 @@ public external abstract class HTMLOptionsCollection : HTMLCollection() {
     open var selectedIndex: Int
     @nativeSetter
     operator fun set(index: Int, option: HTMLOptionElement?): Unit
-    fun add(element: UnionHTMLOptGroupElementOrHTMLOptionElement, before: dynamic = noImpl /* null */): Unit
+    fun add(element: UnionHTMLOptGroupElementOrHTMLOptionElement, before: dynamic = noImpl): Unit
     fun remove(index: Int): Unit
 }
 
@@ -607,10 +623,10 @@ public external abstract class HTMLTrackElement : HTMLElement() {
     open val track: TextTrack
 
     companion object {
-        val NONE: Short = noImpl /* 0 */
-        val LOADING: Short = noImpl /* 1 */
-        val LOADED: Short = noImpl /* 2 */
-        val ERROR: Short = noImpl /* 3 */
+        val NONE: Short
+        val LOADING: Short
+        val LOADED: Short
+        val ERROR: Short
     }
 }
 
@@ -648,18 +664,18 @@ public external abstract class HTMLMediaElement : HTMLElement() {
     fun getStartDate(): dynamic
     fun play(): dynamic
     fun pause(): Unit
-    fun addTextTrack(kind: String, label: String = noImpl /* "" */, language: String = noImpl /* "" */): TextTrack
+    fun addTextTrack(kind: String, label: String = noImpl, language: String = noImpl): TextTrack
 
     companion object {
-        val NETWORK_EMPTY: Short = noImpl /* 0 */
-        val NETWORK_IDLE: Short = noImpl /* 1 */
-        val NETWORK_LOADING: Short = noImpl /* 2 */
-        val NETWORK_NO_SOURCE: Short = noImpl /* 3 */
-        val HAVE_NOTHING: Short = noImpl /* 0 */
-        val HAVE_METADATA: Short = noImpl /* 1 */
-        val HAVE_CURRENT_DATA: Short = noImpl /* 2 */
-        val HAVE_FUTURE_DATA: Short = noImpl /* 3 */
-        val HAVE_ENOUGH_DATA: Short = noImpl /* 4 */
+        val NETWORK_EMPTY: Short
+        val NETWORK_IDLE: Short
+        val NETWORK_LOADING: Short
+        val NETWORK_NO_SOURCE: Short
+        val HAVE_NOTHING: Short
+        val HAVE_METADATA: Short
+        val HAVE_CURRENT_DATA: Short
+        val HAVE_FUTURE_DATA: Short
+        val HAVE_ENOUGH_DATA: Short
     }
 }
 
@@ -667,10 +683,10 @@ public external abstract class MediaError {
     open val code: Short
 
     companion object {
-        val MEDIA_ERR_ABORTED: Short = noImpl /* 1 */
-        val MEDIA_ERR_NETWORK: Short = noImpl /* 2 */
-        val MEDIA_ERR_DECODE: Short = noImpl /* 3 */
-        val MEDIA_ERR_SRC_NOT_SUPPORTED: Short = noImpl /* 4 */
+        val MEDIA_ERR_ABORTED: Short
+        val MEDIA_ERR_NETWORK: Short
+        val MEDIA_ERR_DECODE: Short
+        val MEDIA_ERR_SRC_NOT_SUPPORTED: Short
     }
 }
 
@@ -758,18 +774,18 @@ public external abstract class TimeRanges {
     fun end(index: Int): Double
 }
 
-public external open class TrackEvent(type: String, eventInitDict: TrackEventInit = noImpl /* noImpl */) : Event(type, eventInitDict) {
+public external open class TrackEvent(type: String, eventInitDict: TrackEventInit = noImpl) : Event(type, eventInitDict) {
     open val track: UnionAudioTrackOrTextTrackOrVideoTrack?
 }
 
 public external interface TrackEventInit : EventInit {
-    var track: UnionAudioTrackOrTextTrackOrVideoTrack? /* null */
+    var track: UnionAudioTrackOrTextTrackOrVideoTrack? /* = null */
         get() = noImpl
         set(value) = noImpl
 }
 
 @Suppress("NOTHING_TO_INLINE")
-public inline fun TrackEventInit(track: UnionAudioTrackOrTextTrackOrVideoTrack? = noImpl /* null */, bubbles: Boolean? = noImpl /* false */, cancelable: Boolean? = noImpl /* false */, composed: Boolean? = noImpl /* false */): TrackEventInit {
+public inline fun TrackEventInit(track: UnionAudioTrackOrTextTrackOrVideoTrack? = null, bubbles: Boolean? = false, cancelable: Boolean? = false, composed: Boolean? = false): TrackEventInit {
     val o = js("({})")
 
     o["track"] = track
@@ -820,7 +836,7 @@ public external abstract class HTMLTableElement : HTMLElement() {
     fun createTFoot(): HTMLTableSectionElement
     fun deleteTFoot(): Unit
     fun createTBody(): HTMLTableSectionElement
-    fun insertRow(index: Int = noImpl /* -1 */): HTMLTableRowElement
+    fun insertRow(index: Int = noImpl): HTMLTableRowElement
     fun deleteRow(index: Int): Unit
 }
 
@@ -843,7 +859,7 @@ public external abstract class HTMLTableSectionElement : HTMLElement() {
     open var ch: String
     open var chOff: String
     open var vAlign: String
-    fun insertRow(index: Int = noImpl /* -1 */): HTMLElement
+    fun insertRow(index: Int = noImpl): HTMLElement
     fun deleteRow(index: Int): Unit
 }
 
@@ -856,7 +872,7 @@ public external abstract class HTMLTableRowElement : HTMLElement() {
     open var chOff: String
     open var vAlign: String
     open var bgColor: String
-    fun insertCell(index: Int = noImpl /* -1 */): HTMLElement
+    fun insertCell(index: Int = noImpl): HTMLElement
     fun deleteCell(index: Int): Unit
 }
 
@@ -954,15 +970,15 @@ public external abstract class HTMLInputElement : HTMLElement() {
     open var selectionDirection: String?
     open var align: String
     open var useMap: String
-    fun stepUp(n: Int = noImpl /* 1 */): Unit
-    fun stepDown(n: Int = noImpl /* 1 */): Unit
+    fun stepUp(n: Int = noImpl): Unit
+    fun stepDown(n: Int = noImpl): Unit
     fun checkValidity(): Boolean
     fun reportValidity(): Boolean
     fun setCustomValidity(error: String): Unit
     fun select(): Unit
     fun setRangeText(replacement: String): Unit
-    fun setRangeText(replacement: String, start: Int, end: Int, selectionMode: String = noImpl /* "preserve" */): Unit
-    fun setSelectionRange(start: Int, end: Int, direction: String = noImpl /* noImpl */): Unit
+    fun setRangeText(replacement: String, start: Int, end: Int, selectionMode: String = noImpl): Unit
+    fun setSelectionRange(start: Int, end: Int, direction: String = noImpl): Unit
 }
 
 public external abstract class HTMLButtonElement : HTMLElement() {
@@ -1010,7 +1026,7 @@ public external abstract class HTMLSelectElement : HTMLElement() {
     @nativeGetter
     operator fun get(index: Int): Element?
     fun namedItem(name: String): HTMLOptionElement?
-    fun add(element: UnionHTMLOptGroupElementOrHTMLOptionElement, before: dynamic = noImpl /* null */): Unit
+    fun add(element: UnionHTMLOptGroupElementOrHTMLOptionElement, before: dynamic = noImpl): Unit
     fun remove(index: Int): Unit
     @nativeSetter
     operator fun set(index: Int, option: HTMLOptionElement?): Unit
@@ -1071,8 +1087,8 @@ public external abstract class HTMLTextAreaElement : HTMLElement() {
     fun setCustomValidity(error: String): Unit
     fun select(): Unit
     fun setRangeText(replacement: String): Unit
-    fun setRangeText(replacement: String, start: Int, end: Int, selectionMode: String = noImpl /* "preserve" */): Unit
-    fun setSelectionRange(start: Int, end: Int, direction: String = noImpl /* noImpl */): Unit
+    fun setRangeText(replacement: String, start: Int, end: Int, selectionMode: String = noImpl): Unit
+    fun setSelectionRange(start: Int, end: Int, direction: String = noImpl): Unit
 }
 
 public external abstract class HTMLKeygenElement : HTMLElement() {
@@ -1178,18 +1194,18 @@ public external abstract class HTMLMenuItemElement : HTMLElement() {
     open var default: Boolean
 }
 
-public external open class RelatedEvent(type: String, eventInitDict: RelatedEventInit = noImpl /* noImpl */) : Event(type, eventInitDict) {
+public external open class RelatedEvent(type: String, eventInitDict: RelatedEventInit = noImpl) : Event(type, eventInitDict) {
     open val relatedTarget: EventTarget?
 }
 
 public external interface RelatedEventInit : EventInit {
-    var relatedTarget: EventTarget? /* null */
+    var relatedTarget: EventTarget? /* = null */
         get() = noImpl
         set(value) = noImpl
 }
 
 @Suppress("NOTHING_TO_INLINE")
-public inline fun RelatedEventInit(relatedTarget: EventTarget? = noImpl /* null */, bubbles: Boolean? = noImpl /* false */, cancelable: Boolean? = noImpl /* false */, composed: Boolean? = noImpl /* false */): RelatedEventInit {
+public inline fun RelatedEventInit(relatedTarget: EventTarget? = null, bubbles: Boolean? = false, cancelable: Boolean? = false, composed: Boolean? = false): RelatedEventInit {
     val o = js("({})")
 
     o["relatedTarget"] = relatedTarget
@@ -1203,9 +1219,9 @@ public inline fun RelatedEventInit(relatedTarget: EventTarget? = noImpl /* null 
 public external abstract class HTMLDialogElement : HTMLElement() {
     open var open: Boolean
     open var returnValue: String
-    fun show(anchor: UnionElementOrMouseEvent = noImpl /* noImpl */): Unit
-    fun showModal(anchor: UnionElementOrMouseEvent = noImpl /* noImpl */): Unit
-    fun close(returnValue: String = noImpl /* noImpl */): Unit
+    fun show(anchor: UnionElementOrMouseEvent = noImpl): Unit
+    fun showModal(anchor: UnionElementOrMouseEvent = noImpl): Unit
+    fun close(returnValue: String = noImpl): Unit
 }
 
 public external abstract class HTMLScriptElement : HTMLElement(), HTMLOrSVGScriptElement {
@@ -1227,17 +1243,17 @@ public external abstract class HTMLTemplateElement : HTMLElement() {
 
 public external abstract class HTMLSlotElement : HTMLElement() {
     open var name: String
-    fun assignedNodes(options: AssignedNodesOptions = noImpl /* noImpl */): Array<Node>
+    fun assignedNodes(options: AssignedNodesOptions = noImpl): Array<Node>
 }
 
 public external interface AssignedNodesOptions {
-    var flatten: Boolean? /* false */
+    var flatten: Boolean? /* = false */
         get() = noImpl
         set(value) = noImpl
 }
 
 @Suppress("NOTHING_TO_INLINE")
-public inline fun AssignedNodesOptions(flatten: Boolean? = noImpl /* false */): AssignedNodesOptions {
+public inline fun AssignedNodesOptions(flatten: Boolean? = false): AssignedNodesOptions {
     val o = js("({})")
 
     o["flatten"] = flatten
@@ -1249,18 +1265,18 @@ public external abstract class HTMLCanvasElement : HTMLElement(), TexImageSource
     open var width: Int
     open var height: Int
     fun getContext(contextId: String, vararg arguments: Any?): RenderingContext?
-    fun toDataURL(type: String = noImpl /* noImpl */, quality: Any? = noImpl /* noImpl */): String
-    fun toBlob(_callback: (Blob?) -> Unit, type: String = noImpl /* noImpl */, quality: Any? = noImpl /* noImpl */): Unit
+    fun toDataURL(type: String = noImpl, quality: Any? = noImpl): String
+    fun toBlob(_callback: (Blob?) -> Unit, type: String = noImpl, quality: Any? = noImpl): Unit
 }
 
 public external interface CanvasRenderingContext2DSettings {
-    var alpha: Boolean? /* true */
+    var alpha: Boolean? /* = true */
         get() = noImpl
         set(value) = noImpl
 }
 
 @Suppress("NOTHING_TO_INLINE")
-public inline fun CanvasRenderingContext2DSettings(alpha: Boolean? = noImpl /* true */): CanvasRenderingContext2DSettings {
+public inline fun CanvasRenderingContext2DSettings(alpha: Boolean? = true): CanvasRenderingContext2DSettings {
     val o = js("({})")
 
     o["alpha"] = alpha
@@ -1284,7 +1300,7 @@ public external interface CanvasTransform {
     fun transform(a: Double, b: Double, c: Double, d: Double, e: Double, f: Double): Unit
     fun getTransform(): DOMMatrix
     fun setTransform(a: Double, b: Double, c: Double, d: Double, e: Double, f: Double): Unit
-    fun setTransform(transform: dynamic = noImpl /* noImpl */): Unit
+    fun setTransform(transform: dynamic = noImpl): Unit
     fun resetTransform(): Unit
 }
 
@@ -1325,15 +1341,15 @@ public external interface CanvasRect {
 
 public external interface CanvasDrawPath {
     fun beginPath(): Unit
-    fun fill(fillRule: String = noImpl /* "nonzero" */): Unit
-    fun fill(path: Path2D, fillRule: String = noImpl /* "nonzero" */): Unit
+    fun fill(fillRule: String = noImpl): Unit
+    fun fill(path: Path2D, fillRule: String = noImpl): Unit
     fun stroke(): Unit
     fun stroke(path: Path2D): Unit
-    fun clip(fillRule: String = noImpl /* "nonzero" */): Unit
-    fun clip(path: Path2D, fillRule: String = noImpl /* "nonzero" */): Unit
+    fun clip(fillRule: String = noImpl): Unit
+    fun clip(path: Path2D, fillRule: String = noImpl): Unit
     fun resetClip(): Unit
-    fun isPointInPath(x: Double, y: Double, fillRule: String = noImpl /* "nonzero" */): Boolean
-    fun isPointInPath(path: Path2D, x: Double, y: Double, fillRule: String = noImpl /* "nonzero" */): Boolean
+    fun isPointInPath(x: Double, y: Double, fillRule: String = noImpl): Boolean
+    fun isPointInPath(path: Path2D, x: Double, y: Double, fillRule: String = noImpl): Boolean
     fun isPointInStroke(x: Double, y: Double): Boolean
     fun isPointInStroke(path: Path2D, x: Double, y: Double): Boolean
 }
@@ -1346,8 +1362,8 @@ public external interface CanvasUserInterface {
 }
 
 public external interface CanvasText {
-    fun fillText(text: String, x: Double, y: Double, maxWidth: Double = noImpl /* noImpl */): Unit
-    fun strokeText(text: String, x: Double, y: Double, maxWidth: Double = noImpl /* noImpl */): Unit
+    fun fillText(text: String, x: Double, y: Double, maxWidth: Double = noImpl): Unit
+    fun strokeText(text: String, x: Double, y: Double, maxWidth: Double = noImpl): Unit
     fun measureText(text: String): TextMetrics
 }
 
@@ -1358,7 +1374,7 @@ public external interface CanvasDrawImage {
 }
 
 public external interface CanvasHitRegion {
-    fun addHitRegion(options: HitRegionOptions = noImpl /* noImpl */): Unit
+    fun addHitRegion(options: HitRegionOptions = noImpl): Unit
     fun removeHitRegion(id: String): Unit
     fun clearHitRegions(): Unit
 }
@@ -1397,8 +1413,8 @@ public external interface CanvasPath {
     fun arcTo(x1: Double, y1: Double, x2: Double, y2: Double, radius: Double): Unit
     fun arcTo(x1: Double, y1: Double, x2: Double, y2: Double, radiusX: Double, radiusY: Double, rotation: Double): Unit
     fun rect(x: Double, y: Double, w: Double, h: Double): Unit
-    fun arc(x: Double, y: Double, radius: Double, startAngle: Double, endAngle: Double, anticlockwise: Boolean = noImpl /* false */): Unit
-    fun ellipse(x: Double, y: Double, radiusX: Double, radiusY: Double, rotation: Double, startAngle: Double, endAngle: Double, anticlockwise: Boolean = noImpl /* false */): Unit
+    fun arc(x: Double, y: Double, radius: Double, startAngle: Double, endAngle: Double, anticlockwise: Boolean = noImpl): Unit
+    fun ellipse(x: Double, y: Double, radiusX: Double, radiusY: Double, rotation: Double, startAngle: Double, endAngle: Double, anticlockwise: Boolean = noImpl): Unit
 }
 
 public external abstract class CanvasGradient {
@@ -1406,7 +1422,7 @@ public external abstract class CanvasGradient {
 }
 
 public external abstract class CanvasPattern {
-    fun setTransform(transform: dynamic = noImpl /* noImpl */): Unit
+    fun setTransform(transform: dynamic = noImpl): Unit
 }
 
 public external abstract class TextMetrics {
@@ -1425,34 +1441,34 @@ public external abstract class TextMetrics {
 }
 
 public external interface HitRegionOptions {
-    var path: Path2D? /* null */
+    var path: Path2D? /* = null */
         get() = noImpl
         set(value) = noImpl
-    var fillRule: String? /* "nonzero" */
+    var fillRule: String? /* = "nonzero" */
         get() = noImpl
         set(value) = noImpl
-    var id: String? /* "" */
+    var id: String? /* = "" */
         get() = noImpl
         set(value) = noImpl
-    var parentID: String? /* null */
+    var parentID: String? /* = null */
         get() = noImpl
         set(value) = noImpl
-    var cursor: String? /* "inherit" */
+    var cursor: String? /* = "inherit" */
         get() = noImpl
         set(value) = noImpl
-    var control: Element? /* null */
+    var control: Element? /* = null */
         get() = noImpl
         set(value) = noImpl
-    var label: String? /* null */
+    var label: String? /* = null */
         get() = noImpl
         set(value) = noImpl
-    var role: String? /* null */
+    var role: String? /* = null */
         get() = noImpl
         set(value) = noImpl
 }
 
 @Suppress("NOTHING_TO_INLINE")
-public inline fun HitRegionOptions(path: Path2D? = noImpl /* null */, fillRule: String? = noImpl /* "nonzero" */, id: String? = noImpl /* "" */, parentID: String? = noImpl /* null */, cursor: String? = noImpl /* "inherit" */, control: Element? = noImpl /* null */, label: String? = noImpl /* null */, role: String? = noImpl /* null */): HitRegionOptions {
+public inline fun HitRegionOptions(path: Path2D? = null, fillRule: String? = "nonzero", id: String? = "", parentID: String? = null, cursor: String? = "inherit", control: Element? = null, label: String? = null, role: String? = null): HitRegionOptions {
     val o = js("({})")
 
     o["path"] = path
@@ -1469,7 +1485,7 @@ public inline fun HitRegionOptions(path: Path2D? = noImpl /* null */, fillRule: 
 
 public external open class ImageData : TexImageSource {
     constructor(sw: Int, sh: Int)
-    constructor(data: Uint8ClampedArray, sw: Int, sh: Int = noImpl /* noImpl */)
+    constructor(data: Uint8ClampedArray, sw: Int, sh: Int = noImpl)
     open val width: Int
     open val height: Int
     open val data: Uint8ClampedArray
@@ -1477,9 +1493,9 @@ public external open class ImageData : TexImageSource {
 
 public external open class Path2D() : CanvasPath {
     constructor(path: Path2D) : this()
-    constructor(paths: Array<Path2D>, fillRule: String = noImpl /* "nonzero" */) : this()
+    constructor(paths: Array<Path2D>, fillRule: String = noImpl) : this()
     constructor(d: String) : this()
-    fun addPath(path: Path2D, transform: dynamic = noImpl /* noImpl */): Unit
+    fun addPath(path: Path2D, transform: dynamic = noImpl): Unit
     override fun closePath(): Unit
     override fun moveTo(x: Double, y: Double): Unit
     override fun lineTo(x: Double, y: Double): Unit
@@ -1488,8 +1504,8 @@ public external open class Path2D() : CanvasPath {
     override fun arcTo(x1: Double, y1: Double, x2: Double, y2: Double, radius: Double): Unit
     override fun arcTo(x1: Double, y1: Double, x2: Double, y2: Double, radiusX: Double, radiusY: Double, rotation: Double): Unit
     override fun rect(x: Double, y: Double, w: Double, h: Double): Unit
-    override fun arc(x: Double, y: Double, radius: Double, startAngle: Double, endAngle: Double, anticlockwise: Boolean /* false */): Unit
-    override fun ellipse(x: Double, y: Double, radiusX: Double, radiusY: Double, rotation: Double, startAngle: Double, endAngle: Double, anticlockwise: Boolean /* false */): Unit
+    override fun arc(x: Double, y: Double, radius: Double, startAngle: Double, endAngle: Double, anticlockwise: Boolean /* = noImpl */): Unit
+    override fun ellipse(x: Double, y: Double, radiusX: Double, radiusY: Double, rotation: Double, startAngle: Double, endAngle: Double, anticlockwise: Boolean /* = noImpl */): Unit
 }
 
 public external abstract class Touch {
@@ -1502,13 +1518,13 @@ public external abstract class ImageBitmapRenderingContext {
 }
 
 public external interface ImageBitmapRenderingContextSettings {
-    var alpha: Boolean? /* true */
+    var alpha: Boolean? /* = true */
         get() = noImpl
         set(value) = noImpl
 }
 
 @Suppress("NOTHING_TO_INLINE")
-public inline fun ImageBitmapRenderingContextSettings(alpha: Boolean? = noImpl /* true */): ImageBitmapRenderingContextSettings {
+public inline fun ImageBitmapRenderingContextSettings(alpha: Boolean? = true): ImageBitmapRenderingContextSettings {
     val o = js("({})")
 
     o["alpha"] = alpha
@@ -1517,7 +1533,7 @@ public inline fun ImageBitmapRenderingContextSettings(alpha: Boolean? = noImpl /
 }
 
 public external abstract class CustomElementRegistry {
-    fun define(name: String, constructor: () -> dynamic, options: ElementDefinitionOptions = noImpl /* noImpl */): Unit
+    fun define(name: String, constructor: () -> dynamic, options: ElementDefinitionOptions = noImpl): Unit
     fun get(name: String): Any?
     fun whenDefined(name: String): dynamic
 }
@@ -1551,7 +1567,7 @@ public external abstract class DataTransfer {
     fun setDragImage(image: Element, x: Int, y: Int): Unit
     fun getData(format: String): String
     fun setData(format: String, data: String): Unit
-    fun clearData(format: String = noImpl /* noImpl */): Unit
+    fun clearData(format: String = noImpl): Unit
 }
 
 public external abstract class DataTransferItemList {
@@ -1571,18 +1587,18 @@ public external abstract class DataTransferItem {
     fun getAsFile(): File?
 }
 
-public external open class DragEvent(type: String, eventInitDict: DragEventInit = noImpl /* noImpl */) : MouseEvent(type, eventInitDict) {
+public external open class DragEvent(type: String, eventInitDict: DragEventInit = noImpl) : MouseEvent(type, eventInitDict) {
     open val dataTransfer: DataTransfer?
 }
 
 public external interface DragEventInit : MouseEventInit {
-    var dataTransfer: DataTransfer? /* null */
+    var dataTransfer: DataTransfer? /* = null */
         get() = noImpl
         set(value) = noImpl
 }
 
 @Suppress("NOTHING_TO_INLINE")
-public inline fun DragEventInit(dataTransfer: DataTransfer? = noImpl /* null */, screenX: Int? = noImpl /* 0 */, screenY: Int? = noImpl /* 0 */, clientX: Int? = noImpl /* 0 */, clientY: Int? = noImpl /* 0 */, button: Short? = noImpl /* 0 */, buttons: Short? = noImpl /* 0 */, relatedTarget: EventTarget? = noImpl /* null */, ctrlKey: Boolean? = noImpl /* false */, shiftKey: Boolean? = noImpl /* false */, altKey: Boolean? = noImpl /* false */, metaKey: Boolean? = noImpl /* false */, modifierAltGraph: Boolean? = noImpl /* false */, modifierCapsLock: Boolean? = noImpl /* false */, modifierFn: Boolean? = noImpl /* false */, modifierFnLock: Boolean? = noImpl /* false */, modifierHyper: Boolean? = noImpl /* false */, modifierNumLock: Boolean? = noImpl /* false */, modifierScrollLock: Boolean? = noImpl /* false */, modifierSuper: Boolean? = noImpl /* false */, modifierSymbol: Boolean? = noImpl /* false */, modifierSymbolLock: Boolean? = noImpl /* false */, view: Window? = noImpl /* null */, detail: Int? = noImpl /* 0 */, bubbles: Boolean? = noImpl /* false */, cancelable: Boolean? = noImpl /* false */, composed: Boolean? = noImpl /* false */): DragEventInit {
+public inline fun DragEventInit(dataTransfer: DataTransfer? = null, screenX: Int? = 0, screenY: Int? = 0, clientX: Int? = 0, clientY: Int? = 0, button: Short? = 0, buttons: Short? = 0, relatedTarget: EventTarget? = null, ctrlKey: Boolean? = false, shiftKey: Boolean? = false, altKey: Boolean? = false, metaKey: Boolean? = false, modifierAltGraph: Boolean? = false, modifierCapsLock: Boolean? = false, modifierFn: Boolean? = false, modifierFnLock: Boolean? = false, modifierHyper: Boolean? = false, modifierNumLock: Boolean? = false, modifierScrollLock: Boolean? = false, modifierSuper: Boolean? = false, modifierSymbol: Boolean? = false, modifierSymbolLock: Boolean? = false, view: Window? = null, detail: Int? = 0, bubbles: Boolean? = false, cancelable: Boolean? = false, composed: Boolean? = false): DragEventInit {
     val o = js("({})")
 
     o["dataTransfer"] = dataTransfer
@@ -1624,11 +1640,11 @@ public external abstract class History {
     open val length: Int
     open var scrollRestoration: String
     open val state: Any?
-    fun go(delta: Int = noImpl /* 0 */): Unit
+    fun go(delta: Int = noImpl): Unit
     fun back(): Unit
     fun forward(): Unit
-    fun pushState(data: Any?, title: String, url: String? = noImpl /* null */): Unit
-    fun replaceState(data: Any?, title: String, url: String? = noImpl /* null */): Unit
+    fun pushState(data: Any?, title: String, url: String? = noImpl): Unit
+    fun replaceState(data: Any?, title: String, url: String? = noImpl): Unit
 }
 
 public external abstract class Location {
@@ -1647,18 +1663,18 @@ public external abstract class Location {
     fun reload(): Unit
 }
 
-public external open class PopStateEvent(type: String, eventInitDict: PopStateEventInit = noImpl /* noImpl */) : Event(type, eventInitDict) {
+public external open class PopStateEvent(type: String, eventInitDict: PopStateEventInit = noImpl) : Event(type, eventInitDict) {
     open val state: Any?
 }
 
 public external interface PopStateEventInit : EventInit {
-    var state: Any? /* null */
+    var state: Any? /* = null */
         get() = noImpl
         set(value) = noImpl
 }
 
 @Suppress("NOTHING_TO_INLINE")
-public inline fun PopStateEventInit(state: Any? = noImpl /* null */, bubbles: Boolean? = noImpl /* false */, cancelable: Boolean? = noImpl /* false */, composed: Boolean? = noImpl /* false */): PopStateEventInit {
+public inline fun PopStateEventInit(state: Any? = null, bubbles: Boolean? = false, cancelable: Boolean? = false, composed: Boolean? = false): PopStateEventInit {
     val o = js("({})")
 
     o["state"] = state
@@ -1669,22 +1685,22 @@ public inline fun PopStateEventInit(state: Any? = noImpl /* null */, bubbles: Bo
     return o
 }
 
-public external open class HashChangeEvent(type: String, eventInitDict: HashChangeEventInit = noImpl /* noImpl */) : Event(type, eventInitDict) {
+public external open class HashChangeEvent(type: String, eventInitDict: HashChangeEventInit = noImpl) : Event(type, eventInitDict) {
     open val oldURL: String
     open val newURL: String
 }
 
 public external interface HashChangeEventInit : EventInit {
-    var oldURL: String? /* "" */
+    var oldURL: String? /* = "" */
         get() = noImpl
         set(value) = noImpl
-    var newURL: String? /* "" */
+    var newURL: String? /* = "" */
         get() = noImpl
         set(value) = noImpl
 }
 
 @Suppress("NOTHING_TO_INLINE")
-public inline fun HashChangeEventInit(oldURL: String? = noImpl /* "" */, newURL: String? = noImpl /* "" */, bubbles: Boolean? = noImpl /* false */, cancelable: Boolean? = noImpl /* false */, composed: Boolean? = noImpl /* false */): HashChangeEventInit {
+public inline fun HashChangeEventInit(oldURL: String? = "", newURL: String? = "", bubbles: Boolean? = false, cancelable: Boolean? = false, composed: Boolean? = false): HashChangeEventInit {
     val o = js("({})")
 
     o["oldURL"] = oldURL
@@ -1696,18 +1712,18 @@ public inline fun HashChangeEventInit(oldURL: String? = noImpl /* "" */, newURL:
     return o
 }
 
-public external open class PageTransitionEvent(type: String, eventInitDict: PageTransitionEventInit = noImpl /* noImpl */) : Event(type, eventInitDict) {
+public external open class PageTransitionEvent(type: String, eventInitDict: PageTransitionEventInit = noImpl) : Event(type, eventInitDict) {
     open val persisted: Boolean
 }
 
 public external interface PageTransitionEventInit : EventInit {
-    var persisted: Boolean? /* false */
+    var persisted: Boolean? /* = false */
         get() = noImpl
         set(value) = noImpl
 }
 
 @Suppress("NOTHING_TO_INLINE")
-public inline fun PageTransitionEventInit(persisted: Boolean? = noImpl /* false */, bubbles: Boolean? = noImpl /* false */, cancelable: Boolean? = noImpl /* false */, composed: Boolean? = noImpl /* false */): PageTransitionEventInit {
+public inline fun PageTransitionEventInit(persisted: Boolean? = false, bubbles: Boolean? = false, cancelable: Boolean? = false, composed: Boolean? = false): PageTransitionEventInit {
     val o = js("({})")
 
     o["persisted"] = persisted
@@ -1737,12 +1753,12 @@ public external abstract class ApplicationCache : EventTarget() {
     fun swapCache(): Unit
 
     companion object {
-        val UNCACHED: Short = noImpl /* 0 */
-        val IDLE: Short = noImpl /* 1 */
-        val CHECKING: Short = noImpl /* 2 */
-        val DOWNLOADING: Short = noImpl /* 3 */
-        val UPDATEREADY: Short = noImpl /* 4 */
-        val OBSOLETE: Short = noImpl /* 5 */
+        val UNCACHED: Short
+        val IDLE: Short
+        val CHECKING: Short
+        val DOWNLOADING: Short
+        val UPDATEREADY: Short
+        val OBSOLETE: Short
     }
 }
 
@@ -1750,7 +1766,7 @@ public external interface NavigatorOnLine {
     val onLine: Boolean
 }
 
-public external open class ErrorEvent(type: String, eventInitDict: ErrorEventInit = noImpl /* noImpl */) : Event(type, eventInitDict) {
+public external open class ErrorEvent(type: String, eventInitDict: ErrorEventInit = noImpl) : Event(type, eventInitDict) {
     open val message: String
     open val filename: String
     open val lineno: Int
@@ -1759,25 +1775,25 @@ public external open class ErrorEvent(type: String, eventInitDict: ErrorEventIni
 }
 
 public external interface ErrorEventInit : EventInit {
-    var message: String? /* "" */
+    var message: String? /* = "" */
         get() = noImpl
         set(value) = noImpl
-    var filename: String? /* "" */
+    var filename: String? /* = "" */
         get() = noImpl
         set(value) = noImpl
-    var lineno: Int? /* 0 */
+    var lineno: Int? /* = 0 */
         get() = noImpl
         set(value) = noImpl
-    var colno: Int? /* 0 */
+    var colno: Int? /* = 0 */
         get() = noImpl
         set(value) = noImpl
-    var error: Any? /* null */
+    var error: Any? /* = null */
         get() = noImpl
         set(value) = noImpl
 }
 
 @Suppress("NOTHING_TO_INLINE")
-public inline fun ErrorEventInit(message: String? = noImpl /* "" */, filename: String? = noImpl /* "" */, lineno: Int? = noImpl /* 0 */, colno: Int? = noImpl /* 0 */, error: Any? = noImpl /* null */, bubbles: Boolean? = noImpl /* false */, cancelable: Boolean? = noImpl /* false */, composed: Boolean? = noImpl /* false */): ErrorEventInit {
+public inline fun ErrorEventInit(message: String? = "", filename: String? = "", lineno: Int? = 0, colno: Int? = 0, error: Any? = null, bubbles: Boolean? = false, cancelable: Boolean? = false, composed: Boolean? = false): ErrorEventInit {
     val o = js("({})")
 
     o["message"] = message
@@ -1807,7 +1823,7 @@ public external interface PromiseRejectionEventInit : EventInit {
 }
 
 @Suppress("NOTHING_TO_INLINE")
-public inline fun PromiseRejectionEventInit(promise: dynamic, reason: Any?, bubbles: Boolean? = noImpl /* false */, cancelable: Boolean? = noImpl /* false */, composed: Boolean? = noImpl /* false */): PromiseRejectionEventInit {
+public inline fun PromiseRejectionEventInit(promise: dynamic, reason: Any?, bubbles: Boolean? = false, cancelable: Boolean? = false, composed: Boolean? = false): PromiseRejectionEventInit {
     val o = js("({})")
 
     o["promise"] = promise
@@ -1910,15 +1926,15 @@ public external interface DocumentAndElementEventHandlers {
 public external interface WindowOrWorkerGlobalScope {
     val caches: CacheStorage
     val origin: String
-    fun fetch(input: dynamic, init: RequestInit = noImpl /* noImpl */): dynamic
+    fun fetch(input: dynamic, init: RequestInit = noImpl): dynamic
     fun btoa(data: String): String
     fun atob(data: String): String
-    fun setTimeout(handler: dynamic, timeout: Int = noImpl /* 0 */, vararg arguments: Any?): Int
-    fun clearTimeout(handle: Int = noImpl /* 0 */): Unit
-    fun setInterval(handler: dynamic, timeout: Int = noImpl /* 0 */, vararg arguments: Any?): Int
-    fun clearInterval(handle: Int = noImpl /* 0 */): Unit
-    fun createImageBitmap(image: dynamic, options: ImageBitmapOptions = noImpl /* noImpl */): dynamic
-    fun createImageBitmap(image: dynamic, sx: Int, sy: Int, sw: Int, sh: Int, options: ImageBitmapOptions = noImpl /* noImpl */): dynamic
+    fun setTimeout(handler: dynamic, timeout: Int = noImpl, vararg arguments: Any?): Int
+    fun clearTimeout(handle: Int = noImpl): Unit
+    fun setInterval(handler: dynamic, timeout: Int = noImpl, vararg arguments: Any?): Int
+    fun clearInterval(handle: Int = noImpl): Unit
+    fun createImageBitmap(image: dynamic, options: ImageBitmapOptions = noImpl): dynamic
+    fun createImageBitmap(image: dynamic, sx: Int, sy: Int, sw: Int, sh: Int, options: ImageBitmapOptions = noImpl): dynamic
 }
 
 public external abstract class Navigator : NavigatorID, NavigatorLanguage, NavigatorOnLine, NavigatorContentUtils, NavigatorCookies, NavigatorPlugins, NavigatorConcurrentHardware {
@@ -1966,7 +1982,7 @@ public external interface NavigatorPlugins {
 
 public external abstract class PluginArray {
     open val length: Int
-    fun refresh(reload: Boolean = noImpl /* false */): Unit
+    fun refresh(reload: Boolean = noImpl): Unit
     fun item(index: Int): Plugin?
     @nativeGetter
     operator fun get(index: Int): Plugin?
@@ -2012,13 +2028,13 @@ public external abstract class ImageBitmap : TexImageSource {
 }
 
 public external interface ImageBitmapOptions {
-    var imageOrientation: String? /* "none" */
+    var imageOrientation: String? /* = "none" */
         get() = noImpl
         set(value) = noImpl
-    var premultiplyAlpha: String? /* "default" */
+    var premultiplyAlpha: String? /* = "default" */
         get() = noImpl
         set(value) = noImpl
-    var colorSpaceConversion: String? /* "default" */
+    var colorSpaceConversion: String? /* = "default" */
         get() = noImpl
         set(value) = noImpl
     var resizeWidth: Int?
@@ -2027,13 +2043,13 @@ public external interface ImageBitmapOptions {
     var resizeHeight: Int?
         get() = noImpl
         set(value) = noImpl
-    var resizeQuality: String? /* "low" */
+    var resizeQuality: String? /* = "low" */
         get() = noImpl
         set(value) = noImpl
 }
 
 @Suppress("NOTHING_TO_INLINE")
-public inline fun ImageBitmapOptions(imageOrientation: String? = noImpl /* "none" */, premultiplyAlpha: String? = noImpl /* "default" */, colorSpaceConversion: String? = noImpl /* "default" */, resizeWidth: Int?, resizeHeight: Int?, resizeQuality: String? = noImpl /* "low" */): ImageBitmapOptions {
+public inline fun ImageBitmapOptions(imageOrientation: String? = "none", premultiplyAlpha: String? = "default", colorSpaceConversion: String? = "default", resizeWidth: Int?, resizeHeight: Int?, resizeQuality: String? = "low"): ImageBitmapOptions {
     val o = js("({})")
 
     o["imageOrientation"] = imageOrientation
@@ -2046,7 +2062,7 @@ public inline fun ImageBitmapOptions(imageOrientation: String? = noImpl /* "none
     return o
 }
 
-public external open class MessageEvent(type: String, eventInitDict: MessageEventInit = noImpl /* noImpl */) : Event(type, eventInitDict) {
+public external open class MessageEvent(type: String, eventInitDict: MessageEventInit = noImpl) : Event(type, eventInitDict) {
     open val data: Any?
     open val origin: String
     open val lastEventId: String
@@ -2056,25 +2072,25 @@ public external open class MessageEvent(type: String, eventInitDict: MessageEven
 }
 
 public external interface MessageEventInit : EventInit {
-    var data: Any? /* null */
+    var data: Any? /* = null */
         get() = noImpl
         set(value) = noImpl
-    var origin: String? /* "" */
+    var origin: String? /* = "" */
         get() = noImpl
         set(value) = noImpl
-    var lastEventId: String? /* "" */
+    var lastEventId: String? /* = "" */
         get() = noImpl
         set(value) = noImpl
-    var source: UnionMessagePortOrWindow? /* null */
+    var source: UnionMessagePortOrWindow? /* = null */
         get() = noImpl
         set(value) = noImpl
-    var ports: Array<MessagePort>? /* arrayOf() */
+    var ports: Array<MessagePort>? /* = arrayOf() */
         get() = noImpl
         set(value) = noImpl
 }
 
 @Suppress("NOTHING_TO_INLINE")
-public inline fun MessageEventInit(data: Any? = noImpl /* null */, origin: String? = noImpl /* "" */, lastEventId: String? = noImpl /* "" */, source: UnionMessagePortOrWindow? = noImpl /* null */, ports: Array<MessagePort>? = noImpl /* arrayOf() */, bubbles: Boolean? = noImpl /* false */, cancelable: Boolean? = noImpl /* false */, composed: Boolean? = noImpl /* false */): MessageEventInit {
+public inline fun MessageEventInit(data: Any? = null, origin: String? = "", lastEventId: String? = "", source: UnionMessagePortOrWindow? = null, ports: Array<MessagePort>? = arrayOf(), bubbles: Boolean? = false, cancelable: Boolean? = false, composed: Boolean? = false): MessageEventInit {
     val o = js("({})")
 
     o["data"] = data
@@ -2089,7 +2105,7 @@ public inline fun MessageEventInit(data: Any? = noImpl /* null */, origin: Strin
     return o
 }
 
-public external open class EventSource(url: String, eventSourceInitDict: EventSourceInit = noImpl /* noImpl */) : EventTarget() {
+public external open class EventSource(url: String, eventSourceInitDict: EventSourceInit = noImpl) : EventTarget() {
     open val url: String
     open val withCredentials: Boolean
     open val readyState: Short
@@ -2099,20 +2115,20 @@ public external open class EventSource(url: String, eventSourceInitDict: EventSo
     fun close(): Unit
 
     companion object {
-        val CONNECTING: Short = noImpl /* 0 */
-        val OPEN: Short = noImpl /* 1 */
-        val CLOSED: Short = noImpl /* 2 */
+        val CONNECTING: Short
+        val OPEN: Short
+        val CLOSED: Short
     }
 }
 
 public external interface EventSourceInit {
-    var withCredentials: Boolean? /* false */
+    var withCredentials: Boolean? /* = false */
         get() = noImpl
         set(value) = noImpl
 }
 
 @Suppress("NOTHING_TO_INLINE")
-public inline fun EventSourceInit(withCredentials: Boolean? = noImpl /* false */): EventSourceInit {
+public inline fun EventSourceInit(withCredentials: Boolean? = false): EventSourceInit {
     val o = js("({})")
 
     o["withCredentials"] = withCredentials
@@ -2120,7 +2136,7 @@ public inline fun EventSourceInit(withCredentials: Boolean? = noImpl /* false */
     return o
 }
 
-public external open class WebSocket(url: String, protocols: dynamic = noImpl /* arrayOf<dynamic>() */) : EventTarget() {
+public external open class WebSocket(url: String, protocols: dynamic = noImpl) : EventTarget() {
     open val url: String
     open val readyState: Short
     open val bufferedAmount: Int
@@ -2131,40 +2147,40 @@ public external open class WebSocket(url: String, protocols: dynamic = noImpl /*
     open val protocol: String
     var onmessage: ((Event) -> dynamic)?
     var binaryType: String
-    fun close(code: Short = noImpl /* noImpl */, reason: String = noImpl /* noImpl */): Unit
+    fun close(code: Short = noImpl, reason: String = noImpl): Unit
     fun send(data: String): Unit
     fun send(data: Blob): Unit
     fun send(data: ArrayBuffer): Unit
     fun send(data: ArrayBufferView): Unit
 
     companion object {
-        val CONNECTING: Short = noImpl /* 0 */
-        val OPEN: Short = noImpl /* 1 */
-        val CLOSING: Short = noImpl /* 2 */
-        val CLOSED: Short = noImpl /* 3 */
+        val CONNECTING: Short
+        val OPEN: Short
+        val CLOSING: Short
+        val CLOSED: Short
     }
 }
 
-public external open class CloseEvent(type: String, eventInitDict: CloseEventInit = noImpl /* noImpl */) : Event(type, eventInitDict) {
+public external open class CloseEvent(type: String, eventInitDict: CloseEventInit = noImpl) : Event(type, eventInitDict) {
     open val wasClean: Boolean
     open val code: Short
     open val reason: String
 }
 
 public external interface CloseEventInit : EventInit {
-    var wasClean: Boolean? /* false */
+    var wasClean: Boolean? /* = false */
         get() = noImpl
         set(value) = noImpl
-    var code: Short? /* 0 */
+    var code: Short? /* = 0 */
         get() = noImpl
         set(value) = noImpl
-    var reason: String? /* "" */
+    var reason: String? /* = "" */
         get() = noImpl
         set(value) = noImpl
 }
 
 @Suppress("NOTHING_TO_INLINE")
-public inline fun CloseEventInit(wasClean: Boolean? = noImpl /* false */, code: Short? = noImpl /* 0 */, reason: String? = noImpl /* "" */, bubbles: Boolean? = noImpl /* false */, cancelable: Boolean? = noImpl /* false */, composed: Boolean? = noImpl /* false */): CloseEventInit {
+public inline fun CloseEventInit(wasClean: Boolean? = false, code: Short? = 0, reason: String? = "", bubbles: Boolean? = false, cancelable: Boolean? = false, composed: Boolean? = false): CloseEventInit {
     val o = js("({})")
 
     o["wasClean"] = wasClean
@@ -2184,7 +2200,7 @@ public external open class MessageChannel {
 
 public external abstract class MessagePort : EventTarget(), UnionMessagePortOrWindow, UnionMessagePortOrServiceWorker, UnionClientOrMessagePortOrServiceWorker {
     open var onmessage: ((Event) -> dynamic)?
-    fun postMessage(message: Any?, transfer: Array<dynamic> = noImpl /* arrayOf() */): Unit
+    fun postMessage(message: Any?, transfer: Array<dynamic> = noImpl): Unit
     fun start(): Unit
     fun close(): Unit
 }
@@ -2211,7 +2227,7 @@ public external abstract class WorkerGlobalScope : EventTarget(), WindowOrWorker
 
 public external abstract class DedicatedWorkerGlobalScope : WorkerGlobalScope() {
     open var onmessage: ((Event) -> dynamic)?
-    fun postMessage(message: Any?, transfer: Array<dynamic> = noImpl /* arrayOf() */): Unit
+    fun postMessage(message: Any?, transfer: Array<dynamic> = noImpl): Unit
     fun close(): Unit
 }
 
@@ -2226,24 +2242,24 @@ public external interface AbstractWorker {
     var onerror: ((Event) -> dynamic)?
 }
 
-public external open class Worker(scriptURL: String, options: WorkerOptions = noImpl /* noImpl */) : EventTarget(), AbstractWorker {
+public external open class Worker(scriptURL: String, options: WorkerOptions = noImpl) : EventTarget(), AbstractWorker {
     var onmessage: ((Event) -> dynamic)?
     override var onerror: ((Event) -> dynamic)?
     fun terminate(): Unit
-    fun postMessage(message: Any?, transfer: Array<dynamic> = noImpl /* arrayOf() */): Unit
+    fun postMessage(message: Any?, transfer: Array<dynamic> = noImpl): Unit
 }
 
 public external interface WorkerOptions {
-    var type: String? /* "classic" */
+    var type: String? /* = "classic" */
         get() = noImpl
         set(value) = noImpl
-    var credentials: String? /* "omit" */
+    var credentials: String? /* = "omit" */
         get() = noImpl
         set(value) = noImpl
 }
 
 @Suppress("NOTHING_TO_INLINE")
-public inline fun WorkerOptions(type: String? = noImpl /* "classic" */, credentials: String? = noImpl /* "omit" */): WorkerOptions {
+public inline fun WorkerOptions(type: String? = "classic", credentials: String? = "omit"): WorkerOptions {
     val o = js("({})")
 
     o["type"] = type
@@ -2252,7 +2268,7 @@ public inline fun WorkerOptions(type: String? = noImpl /* "classic" */, credenti
     return o
 }
 
-public external open class SharedWorker(scriptURL: String, name: String = noImpl /* "" */, options: WorkerOptions = noImpl /* noImpl */) : EventTarget(), AbstractWorker {
+public external open class SharedWorker(scriptURL: String, name: String = noImpl, options: WorkerOptions = noImpl) : EventTarget(), AbstractWorker {
     open val port: MessagePort
     override var onerror: ((Event) -> dynamic)?
 }
@@ -2298,7 +2314,7 @@ public external interface WindowLocalStorage {
     val localStorage: Storage
 }
 
-public external open class StorageEvent(type: String, eventInitDict: StorageEventInit = noImpl /* noImpl */) : Event(type, eventInitDict) {
+public external open class StorageEvent(type: String, eventInitDict: StorageEventInit = noImpl) : Event(type, eventInitDict) {
     open val key: String?
     open val oldValue: String?
     open val newValue: String?
@@ -2307,25 +2323,25 @@ public external open class StorageEvent(type: String, eventInitDict: StorageEven
 }
 
 public external interface StorageEventInit : EventInit {
-    var key: String? /* null */
+    var key: String? /* = null */
         get() = noImpl
         set(value) = noImpl
-    var oldValue: String? /* null */
+    var oldValue: String? /* = null */
         get() = noImpl
         set(value) = noImpl
-    var newValue: String? /* null */
+    var newValue: String? /* = null */
         get() = noImpl
         set(value) = noImpl
-    var url: String? /* "" */
+    var url: String? /* = "" */
         get() = noImpl
         set(value) = noImpl
-    var storageArea: Storage? /* null */
+    var storageArea: Storage? /* = null */
         get() = noImpl
         set(value) = noImpl
 }
 
 @Suppress("NOTHING_TO_INLINE")
-public inline fun StorageEventInit(key: String? = noImpl /* null */, oldValue: String? = noImpl /* null */, newValue: String? = noImpl /* null */, url: String? = noImpl /* "" */, storageArea: Storage? = noImpl /* null */, bubbles: Boolean? = noImpl /* false */, cancelable: Boolean? = noImpl /* false */, composed: Boolean? = noImpl /* false */): StorageEventInit {
+public inline fun StorageEventInit(key: String? = null, oldValue: String? = null, newValue: String? = null, url: String? = "", storageArea: Storage? = null, bubbles: Boolean? = false, cancelable: Boolean? = false, composed: Boolean? = false): StorageEventInit {
     val o = js("({})")
 
     o["key"] = key
@@ -2407,19 +2423,19 @@ public external interface External {
 }
 
 public external interface EventInit {
-    var bubbles: Boolean? /* false */
+    var bubbles: Boolean? /* = false */
         get() = noImpl
         set(value) = noImpl
-    var cancelable: Boolean? /* false */
+    var cancelable: Boolean? /* = false */
         get() = noImpl
         set(value) = noImpl
-    var composed: Boolean? /* false */
+    var composed: Boolean? /* = false */
         get() = noImpl
         set(value) = noImpl
 }
 
 @Suppress("NOTHING_TO_INLINE")
-public inline fun EventInit(bubbles: Boolean? = noImpl /* false */, cancelable: Boolean? = noImpl /* false */, composed: Boolean? = noImpl /* false */): EventInit {
+public inline fun EventInit(bubbles: Boolean? = false, cancelable: Boolean? = false, composed: Boolean? = false): EventInit {
     val o = js("({})")
 
     o["bubbles"] = bubbles
@@ -2429,19 +2445,19 @@ public inline fun EventInit(bubbles: Boolean? = noImpl /* false */, cancelable: 
     return o
 }
 
-public external open class CustomEvent(type: String, eventInitDict: CustomEventInit = noImpl /* noImpl */) : Event(type, eventInitDict) {
+public external open class CustomEvent(type: String, eventInitDict: CustomEventInit = noImpl) : Event(type, eventInitDict) {
     open val detail: Any?
     fun initCustomEvent(type: String, bubbles: Boolean, cancelable: Boolean, detail: Any?): Unit
 }
 
 public external interface CustomEventInit : EventInit {
-    var detail: Any? /* null */
+    var detail: Any? /* = null */
         get() = noImpl
         set(value) = noImpl
 }
 
 @Suppress("NOTHING_TO_INLINE")
-public inline fun CustomEventInit(detail: Any? = noImpl /* null */, bubbles: Boolean? = noImpl /* false */, cancelable: Boolean? = noImpl /* false */, composed: Boolean? = noImpl /* false */): CustomEventInit {
+public inline fun CustomEventInit(detail: Any? = null, bubbles: Boolean? = false, cancelable: Boolean? = false, composed: Boolean? = false): CustomEventInit {
     val o = js("({})")
 
     o["detail"] = detail
@@ -2453,13 +2469,13 @@ public inline fun CustomEventInit(detail: Any? = noImpl /* null */, bubbles: Boo
 }
 
 public external interface EventListenerOptions {
-    var capture: Boolean? /* false */
+    var capture: Boolean? /* = false */
         get() = noImpl
         set(value) = noImpl
 }
 
 @Suppress("NOTHING_TO_INLINE")
-public inline fun EventListenerOptions(capture: Boolean? = noImpl /* false */): EventListenerOptions {
+public inline fun EventListenerOptions(capture: Boolean? = false): EventListenerOptions {
     val o = js("({})")
 
     o["capture"] = capture
@@ -2468,16 +2484,16 @@ public inline fun EventListenerOptions(capture: Boolean? = noImpl /* false */): 
 }
 
 public external interface AddEventListenerOptions : EventListenerOptions {
-    var passive: Boolean? /* false */
+    var passive: Boolean? /* = false */
         get() = noImpl
         set(value) = noImpl
-    var once: Boolean? /* false */
+    var once: Boolean? /* = false */
         get() = noImpl
         set(value) = noImpl
 }
 
 @Suppress("NOTHING_TO_INLINE")
-public inline fun AddEventListenerOptions(passive: Boolean? = noImpl /* false */, once: Boolean? = noImpl /* false */, capture: Boolean? = noImpl /* false */): AddEventListenerOptions {
+public inline fun AddEventListenerOptions(passive: Boolean? = false, once: Boolean? = false, capture: Boolean? = false): AddEventListenerOptions {
     val o = js("({})")
 
     o["passive"] = passive
@@ -2540,13 +2556,13 @@ public external abstract class HTMLCollection : UnionElementOrHTMLCollection {
 }
 
 public external open class MutationObserver(callback: (Array<MutationRecord>, MutationObserver) -> Unit) {
-    fun observe(target: Node, options: MutationObserverInit = noImpl /* noImpl */): Unit
+    fun observe(target: Node, options: MutationObserverInit = noImpl): Unit
     fun disconnect(): Unit
     fun takeRecords(): Array<MutationRecord>
 }
 
 public external interface MutationObserverInit {
-    var childList: Boolean? /* false */
+    var childList: Boolean? /* = false */
         get() = noImpl
         set(value) = noImpl
     var attributes: Boolean?
@@ -2555,7 +2571,7 @@ public external interface MutationObserverInit {
     var characterData: Boolean?
         get() = noImpl
         set(value) = noImpl
-    var subtree: Boolean? /* false */
+    var subtree: Boolean? /* = false */
         get() = noImpl
         set(value) = noImpl
     var attributeOldValue: Boolean?
@@ -2570,7 +2586,7 @@ public external interface MutationObserverInit {
 }
 
 @Suppress("NOTHING_TO_INLINE")
-public inline fun MutationObserverInit(childList: Boolean? = noImpl /* false */, attributes: Boolean?, characterData: Boolean?, subtree: Boolean? = noImpl /* false */, attributeOldValue: Boolean?, characterDataOldValue: Boolean?, attributeFilter: Array<String>?): MutationObserverInit {
+public inline fun MutationObserverInit(childList: Boolean? = false, attributes: Boolean?, characterData: Boolean?, subtree: Boolean? = false, attributeOldValue: Boolean?, characterDataOldValue: Boolean?, attributeFilter: Array<String>?): MutationObserverInit {
     val o = js("({})")
 
     o["childList"] = childList
@@ -2611,10 +2627,10 @@ public external abstract class Node : EventTarget() {
     open val nextSibling: Node?
     open var nodeValue: String?
     open var textContent: String?
-    fun getRootNode(options: GetRootNodeOptions = noImpl /* noImpl */): Node
+    fun getRootNode(options: GetRootNodeOptions = noImpl): Node
     fun hasChildNodes(): Boolean
     fun normalize(): Unit
-    fun cloneNode(deep: Boolean = noImpl /* false */): Node
+    fun cloneNode(deep: Boolean = noImpl): Node
     fun isEqualNode(otherNode: Node?): Boolean
     fun isSameNode(otherNode: Node?): Boolean
     fun compareDocumentPosition(other: Node): Short
@@ -2628,35 +2644,35 @@ public external abstract class Node : EventTarget() {
     fun removeChild(child: Node): Node
 
     companion object {
-        val ELEMENT_NODE: Short = noImpl /* 1 */
-        val ATTRIBUTE_NODE: Short = noImpl /* 2 */
-        val TEXT_NODE: Short = noImpl /* 3 */
-        val CDATA_SECTION_NODE: Short = noImpl /* 4 */
-        val ENTITY_REFERENCE_NODE: Short = noImpl /* 5 */
-        val ENTITY_NODE: Short = noImpl /* 6 */
-        val PROCESSING_INSTRUCTION_NODE: Short = noImpl /* 7 */
-        val COMMENT_NODE: Short = noImpl /* 8 */
-        val DOCUMENT_NODE: Short = noImpl /* 9 */
-        val DOCUMENT_TYPE_NODE: Short = noImpl /* 10 */
-        val DOCUMENT_FRAGMENT_NODE: Short = noImpl /* 11 */
-        val NOTATION_NODE: Short = noImpl /* 12 */
-        val DOCUMENT_POSITION_DISCONNECTED: Short = noImpl /* 0x01 */
-        val DOCUMENT_POSITION_PRECEDING: Short = noImpl /* 0x02 */
-        val DOCUMENT_POSITION_FOLLOWING: Short = noImpl /* 0x04 */
-        val DOCUMENT_POSITION_CONTAINS: Short = noImpl /* 0x08 */
-        val DOCUMENT_POSITION_CONTAINED_BY: Short = noImpl /* 0x10 */
-        val DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC: Short = noImpl /* 0x20 */
+        val ELEMENT_NODE: Short
+        val ATTRIBUTE_NODE: Short
+        val TEXT_NODE: Short
+        val CDATA_SECTION_NODE: Short
+        val ENTITY_REFERENCE_NODE: Short
+        val ENTITY_NODE: Short
+        val PROCESSING_INSTRUCTION_NODE: Short
+        val COMMENT_NODE: Short
+        val DOCUMENT_NODE: Short
+        val DOCUMENT_TYPE_NODE: Short
+        val DOCUMENT_FRAGMENT_NODE: Short
+        val NOTATION_NODE: Short
+        val DOCUMENT_POSITION_DISCONNECTED: Short
+        val DOCUMENT_POSITION_PRECEDING: Short
+        val DOCUMENT_POSITION_FOLLOWING: Short
+        val DOCUMENT_POSITION_CONTAINS: Short
+        val DOCUMENT_POSITION_CONTAINED_BY: Short
+        val DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC: Short
     }
 }
 
 public external interface GetRootNodeOptions {
-    var composed: Boolean? /* false */
+    var composed: Boolean? /* = false */
         get() = noImpl
         set(value) = noImpl
 }
 
 @Suppress("NOTHING_TO_INLINE")
-public inline fun GetRootNodeOptions(composed: Boolean? = noImpl /* false */): GetRootNodeOptions {
+public inline fun GetRootNodeOptions(composed: Boolean? = false): GetRootNodeOptions {
     val o = js("({})")
 
     o["composed"] = composed
@@ -2670,10 +2686,10 @@ public external open class XMLDocument : Document() {
     override fun append(vararg nodes: dynamic): Unit
     override fun querySelector(selectors: String): Element?
     override fun querySelectorAll(selectors: String): NodeList
-    override fun getBoxQuads(options: BoxQuadOptions /* noImpl */): Array<DOMQuad>
-    override fun convertQuadFromNode(quad: dynamic, from: dynamic, options: ConvertCoordinateOptions /* noImpl */): DOMQuad
-    override fun convertRectFromNode(rect: DOMRectReadOnly, from: dynamic, options: ConvertCoordinateOptions /* noImpl */): DOMQuad
-    override fun convertPointFromNode(point: DOMPointInit, from: dynamic, options: ConvertCoordinateOptions /* noImpl */): DOMPoint
+    override fun getBoxQuads(options: BoxQuadOptions /* = noImpl */): Array<DOMQuad>
+    override fun convertQuadFromNode(quad: dynamic, from: dynamic, options: ConvertCoordinateOptions /* = noImpl */): DOMQuad
+    override fun convertRectFromNode(rect: DOMRectReadOnly, from: dynamic, options: ConvertCoordinateOptions /* = noImpl */): DOMQuad
+    override fun convertPointFromNode(point: DOMPointInit, from: dynamic, options: ConvertCoordinateOptions /* = noImpl */): DOMPoint
 }
 
 public external interface ElementCreationOptions {
@@ -2693,8 +2709,8 @@ public inline fun ElementCreationOptions(is_: String?): ElementCreationOptions {
 
 public external abstract class DOMImplementation {
     fun createDocumentType(qualifiedName: String, publicId: String, systemId: String): DocumentType
-    fun createDocument(namespace: String?, qualifiedName: String, doctype: DocumentType? = noImpl /* null */): XMLDocument
-    fun createHTMLDocument(title: String = noImpl /* noImpl */): Document
+    fun createDocument(namespace: String?, qualifiedName: String, doctype: DocumentType? = noImpl): XMLDocument
+    fun createHTMLDocument(title: String = noImpl): Document
     fun hasFeature(): Boolean
 }
 
@@ -2778,11 +2794,11 @@ public external abstract class Element : Node(), ParentNode, NonDocumentTypeChil
     fun getBoundingClientRect(): DOMRect
     fun scrollIntoView(): Unit
     fun scrollIntoView(arg: dynamic): Unit
-    fun scroll(options: ScrollToOptions = noImpl /* noImpl */): Unit
+    fun scroll(options: ScrollToOptions = noImpl): Unit
     fun scroll(x: Double, y: Double): Unit
-    fun scrollTo(options: ScrollToOptions = noImpl /* noImpl */): Unit
+    fun scrollTo(options: ScrollToOptions = noImpl): Unit
     fun scrollTo(x: Double, y: Double): Unit
-    fun scrollBy(options: ScrollToOptions = noImpl /* noImpl */): Unit
+    fun scrollBy(options: ScrollToOptions = noImpl): Unit
     fun scrollBy(x: Double, y: Double): Unit
 }
 
@@ -2836,7 +2852,7 @@ public external abstract class CharacterData : Node(), NonDocumentTypeChildNode,
     fun replaceData(offset: Int, count: Int, data: String): Unit
 }
 
-public external open class Text(data: String = noImpl /* "" */) : CharacterData(), Slotable, GeometryUtils {
+public external open class Text(data: String = noImpl) : CharacterData(), Slotable, GeometryUtils {
     open val wholeText: String
     override val previousElementSibling: Element?
     override val nextElementSibling: Element?
@@ -2846,10 +2862,10 @@ public external open class Text(data: String = noImpl /* "" */) : CharacterData(
     override fun after(vararg nodes: dynamic): Unit
     override fun replaceWith(vararg nodes: dynamic): Unit
     override fun remove(): Unit
-    override fun getBoxQuads(options: BoxQuadOptions /* noImpl */): Array<DOMQuad>
-    override fun convertQuadFromNode(quad: dynamic, from: dynamic, options: ConvertCoordinateOptions /* noImpl */): DOMQuad
-    override fun convertRectFromNode(rect: DOMRectReadOnly, from: dynamic, options: ConvertCoordinateOptions /* noImpl */): DOMQuad
-    override fun convertPointFromNode(point: DOMPointInit, from: dynamic, options: ConvertCoordinateOptions /* noImpl */): DOMPoint
+    override fun getBoxQuads(options: BoxQuadOptions /* = noImpl */): Array<DOMQuad>
+    override fun convertQuadFromNode(quad: dynamic, from: dynamic, options: ConvertCoordinateOptions /* = noImpl */): DOMQuad
+    override fun convertRectFromNode(rect: DOMRectReadOnly, from: dynamic, options: ConvertCoordinateOptions /* = noImpl */): DOMQuad
+    override fun convertPointFromNode(point: DOMPointInit, from: dynamic, options: ConvertCoordinateOptions /* = noImpl */): DOMPoint
 }
 
 public external open class CDATASection : Text(noImpl) {
@@ -2857,17 +2873,17 @@ public external open class CDATASection : Text(noImpl) {
     override fun after(vararg nodes: dynamic): Unit
     override fun replaceWith(vararg nodes: dynamic): Unit
     override fun remove(): Unit
-    override fun getBoxQuads(options: BoxQuadOptions /* noImpl */): Array<DOMQuad>
-    override fun convertQuadFromNode(quad: dynamic, from: dynamic, options: ConvertCoordinateOptions /* noImpl */): DOMQuad
-    override fun convertRectFromNode(rect: DOMRectReadOnly, from: dynamic, options: ConvertCoordinateOptions /* noImpl */): DOMQuad
-    override fun convertPointFromNode(point: DOMPointInit, from: dynamic, options: ConvertCoordinateOptions /* noImpl */): DOMPoint
+    override fun getBoxQuads(options: BoxQuadOptions /* = noImpl */): Array<DOMQuad>
+    override fun convertQuadFromNode(quad: dynamic, from: dynamic, options: ConvertCoordinateOptions /* = noImpl */): DOMQuad
+    override fun convertRectFromNode(rect: DOMRectReadOnly, from: dynamic, options: ConvertCoordinateOptions /* = noImpl */): DOMQuad
+    override fun convertPointFromNode(point: DOMPointInit, from: dynamic, options: ConvertCoordinateOptions /* = noImpl */): DOMPoint
 }
 
 public external abstract class ProcessingInstruction : CharacterData(), LinkStyle, UnionElementOrProcessingInstruction {
     open val target: String
 }
 
-public external open class Comment(data: String = noImpl /* "" */) : CharacterData() {
+public external open class Comment(data: String = noImpl) : CharacterData() {
     override val previousElementSibling: Element?
     override val nextElementSibling: Element?
     override fun before(vararg nodes: dynamic): Unit
@@ -2890,7 +2906,7 @@ public external open class Range {
     fun setStartAfter(node: Node): Unit
     fun setEndBefore(node: Node): Unit
     fun setEndAfter(node: Node): Unit
-    fun collapse(toStart: Boolean = noImpl /* false */): Unit
+    fun collapse(toStart: Boolean = noImpl): Unit
     fun selectNode(node: Node): Unit
     fun selectNodeContents(node: Node): Unit
     fun compareBoundaryPoints(how: Short, sourceRange: Range): Short
@@ -2908,10 +2924,10 @@ public external open class Range {
     fun getBoundingClientRect(): DOMRect
 
     companion object {
-        val START_TO_START: Short = noImpl /* 0 */
-        val START_TO_END: Short = noImpl /* 1 */
-        val END_TO_END: Short = noImpl /* 2 */
-        val END_TO_START: Short = noImpl /* 3 */
+        val START_TO_START: Short
+        val START_TO_END: Short
+        val END_TO_END: Short
+        val END_TO_START: Short
     }
 }
 
@@ -2944,22 +2960,22 @@ public external interface NodeFilter {
     fun acceptNode(node: Node): Short
 
     companion object {
-        val FILTER_ACCEPT: Short = noImpl /* 1 */
-        val FILTER_REJECT: Short = noImpl /* 2 */
-        val FILTER_SKIP: Short = noImpl /* 3 */
-        val SHOW_ALL: Int = noImpl /* noImpl */
-        val SHOW_ELEMENT: Int = noImpl /* 0x1 */
-        val SHOW_ATTRIBUTE: Int = noImpl /* 0x2 */
-        val SHOW_TEXT: Int = noImpl /* 0x4 */
-        val SHOW_CDATA_SECTION: Int = noImpl /* 0x8 */
-        val SHOW_ENTITY_REFERENCE: Int = noImpl /* 0x10 */
-        val SHOW_ENTITY: Int = noImpl /* 0x20 */
-        val SHOW_PROCESSING_INSTRUCTION: Int = noImpl /* 0x40 */
-        val SHOW_COMMENT: Int = noImpl /* 0x80 */
-        val SHOW_DOCUMENT: Int = noImpl /* 0x100 */
-        val SHOW_DOCUMENT_TYPE: Int = noImpl /* 0x200 */
-        val SHOW_DOCUMENT_FRAGMENT: Int = noImpl /* 0x400 */
-        val SHOW_NOTATION: Int = noImpl /* 0x800 */
+        val FILTER_ACCEPT: Short
+        val FILTER_REJECT: Short
+        val FILTER_SKIP: Short
+        val SHOW_ALL: Int
+        val SHOW_ELEMENT: Int
+        val SHOW_ATTRIBUTE: Int
+        val SHOW_TEXT: Int
+        val SHOW_CDATA_SECTION: Int
+        val SHOW_ENTITY_REFERENCE: Int
+        val SHOW_ENTITY: Int
+        val SHOW_PROCESSING_INSTRUCTION: Int
+        val SHOW_COMMENT: Int
+        val SHOW_DOCUMENT: Int
+        val SHOW_DOCUMENT_TYPE: Int
+        val SHOW_DOCUMENT_FRAGMENT: Int
+        val SHOW_NOTATION: Int
     }
 }
 
@@ -2972,7 +2988,7 @@ public external abstract class DOMTokenList {
     fun contains(token: String): Boolean
     fun add(vararg tokens: String): Unit
     fun remove(vararg tokens: String): Unit
-    fun toggle(token: String, force: Boolean = noImpl /* noImpl */): Boolean
+    fun toggle(token: String, force: Boolean = noImpl): Boolean
     fun replace(token: String, newToken: String): Unit
     fun supports(token: String): Boolean
 }
@@ -2987,7 +3003,7 @@ public external open class DOMPointReadOnly(x: Double, y: Double, z: Double, w: 
 
 public external open class DOMPoint : DOMPointReadOnly {
     constructor(point: DOMPointInit) : super(noImpl, noImpl, noImpl, noImpl)
-    constructor(x: Double = noImpl /* 0.0 */, y: Double = noImpl /* 0.0 */, z: Double = noImpl /* 0.0 */, w: Double = noImpl /* 1.0 */) : super(x, y, z, w)
+    constructor(x: Double = noImpl, y: Double = noImpl, z: Double = noImpl, w: Double = noImpl) : super(x, y, z, w)
     override var x: Double
     override var y: Double
     override var z: Double
@@ -2995,22 +3011,22 @@ public external open class DOMPoint : DOMPointReadOnly {
 }
 
 public external interface DOMPointInit {
-    var x: Double? /* 0.0 */
+    var x: Double? /* = 0.0 */
         get() = noImpl
         set(value) = noImpl
-    var y: Double? /* 0.0 */
+    var y: Double? /* = 0.0 */
         get() = noImpl
         set(value) = noImpl
-    var z: Double? /* 0.0 */
+    var z: Double? /* = 0.0 */
         get() = noImpl
         set(value) = noImpl
-    var w: Double? /* 1.0 */
+    var w: Double? /* = 1.0 */
         get() = noImpl
         set(value) = noImpl
 }
 
 @Suppress("NOTHING_TO_INLINE")
-public inline fun DOMPointInit(x: Double? = noImpl /* 0.0 */, y: Double? = noImpl /* 0.0 */, z: Double? = noImpl /* 0.0 */, w: Double? = noImpl /* 1.0 */): DOMPointInit {
+public inline fun DOMPointInit(x: Double? = 0.0, y: Double? = 0.0, z: Double? = 0.0, w: Double? = 1.0): DOMPointInit {
     val o = js("({})")
 
     o["x"] = x
@@ -3021,7 +3037,7 @@ public inline fun DOMPointInit(x: Double? = noImpl /* 0.0 */, y: Double? = noImp
     return o
 }
 
-public external open class DOMRect(x: Double = noImpl /* 0.0 */, y: Double = noImpl /* 0.0 */, width: Double = noImpl /* 0.0 */, height: Double = noImpl /* 0.0 */) : DOMRectReadOnly(x, y, width, height) {
+public external open class DOMRect(x: Double = noImpl, y: Double = noImpl, width: Double = noImpl, height: Double = noImpl) : DOMRectReadOnly(x, y, width, height) {
     override var x: Double
     override var y: Double
     override var width: Double
@@ -3040,22 +3056,22 @@ public external open class DOMRectReadOnly(x: Double, y: Double, width: Double, 
 }
 
 public external interface DOMRectInit {
-    var x: Double? /* 0.0 */
+    var x: Double? /* = 0.0 */
         get() = noImpl
         set(value) = noImpl
-    var y: Double? /* 0.0 */
+    var y: Double? /* = 0.0 */
         get() = noImpl
         set(value) = noImpl
-    var width: Double? /* 0.0 */
+    var width: Double? /* = 0.0 */
         get() = noImpl
         set(value) = noImpl
-    var height: Double? /* 0.0 */
+    var height: Double? /* = 0.0 */
         get() = noImpl
         set(value) = noImpl
 }
 
 @Suppress("NOTHING_TO_INLINE")
-public inline fun DOMRectInit(x: Double? = noImpl /* 0.0 */, y: Double? = noImpl /* 0.0 */, width: Double? = noImpl /* 0.0 */, height: Double? = noImpl /* 0.0 */): DOMRectInit {
+public inline fun DOMRectInit(x: Double? = 0.0, y: Double? = 0.0, width: Double? = 0.0, height: Double? = 0.0): DOMRectInit {
     val o = js("({})")
 
     o["x"] = x
@@ -3074,7 +3090,7 @@ public external interface DOMRectList {
 }
 
 public external open class DOMQuad {
-    constructor(p1: DOMPointInit = noImpl /* noImpl */, p2: DOMPointInit = noImpl /* noImpl */, p3: DOMPointInit = noImpl /* noImpl */, p4: DOMPointInit = noImpl /* noImpl */)
+    constructor(p1: DOMPointInit = noImpl, p2: DOMPointInit = noImpl, p3: DOMPointInit = noImpl, p4: DOMPointInit = noImpl)
     constructor(rect: DOMRectInit)
     open val p1: DOMPoint
     open val p2: DOMPoint
@@ -3108,11 +3124,11 @@ public external open class DOMMatrixReadOnly(numberSequence: Array<Double>) {
     open val m44: Double
     open val is2D: Boolean
     open val isIdentity: Boolean
-    fun translate(tx: Double, ty: Double, tz: Double = noImpl /* 0.0 */): DOMMatrix
-    fun scale(scale: Double, originX: Double = noImpl /* 0.0 */, originY: Double = noImpl /* 0.0 */): DOMMatrix
-    fun scale3d(scale: Double, originX: Double = noImpl /* 0.0 */, originY: Double = noImpl /* 0.0 */, originZ: Double = noImpl /* 0.0 */): DOMMatrix
-    fun scaleNonUniform(scaleX: Double, scaleY: Double = noImpl /* 1.0 */, scaleZ: Double = noImpl /* 1.0 */, originX: Double = noImpl /* 0.0 */, originY: Double = noImpl /* 0.0 */, originZ: Double = noImpl /* 0.0 */): DOMMatrix
-    fun rotate(angle: Double, originX: Double = noImpl /* 0.0 */, originY: Double = noImpl /* 0.0 */): DOMMatrix
+    fun translate(tx: Double, ty: Double, tz: Double = noImpl): DOMMatrix
+    fun scale(scale: Double, originX: Double = noImpl, originY: Double = noImpl): DOMMatrix
+    fun scale3d(scale: Double, originX: Double = noImpl, originY: Double = noImpl, originZ: Double = noImpl): DOMMatrix
+    fun scaleNonUniform(scaleX: Double, scaleY: Double = noImpl, scaleZ: Double = noImpl, originX: Double = noImpl, originY: Double = noImpl, originZ: Double = noImpl): DOMMatrix
+    fun rotate(angle: Double, originX: Double = noImpl, originY: Double = noImpl): DOMMatrix
     fun rotateFromVector(x: Double, y: Double): DOMMatrix
     fun rotateAxisAngle(x: Double, y: Double, z: Double, angle: Double): DOMMatrix
     fun skewX(sx: Double): DOMMatrix
@@ -3121,7 +3137,7 @@ public external open class DOMMatrixReadOnly(numberSequence: Array<Double>) {
     fun flipX(): DOMMatrix
     fun flipY(): DOMMatrix
     fun inverse(): DOMMatrix
-    fun transformPoint(point: DOMPointInit = noImpl /* noImpl */): DOMPoint
+    fun transformPoint(point: DOMPointInit = noImpl): DOMPoint
     fun toFloat32Array(): Float32Array
     fun toFloat64Array(): Float64Array
 }
@@ -3156,11 +3172,11 @@ public external open class DOMMatrix() : DOMMatrixReadOnly(noImpl) {
     override var m44: Double
     fun multiplySelf(other: DOMMatrix): DOMMatrix
     fun preMultiplySelf(other: DOMMatrix): DOMMatrix
-    fun translateSelf(tx: Double, ty: Double, tz: Double = noImpl /* 0.0 */): DOMMatrix
-    fun scaleSelf(scale: Double, originX: Double = noImpl /* 0.0 */, originY: Double = noImpl /* 0.0 */): DOMMatrix
-    fun scale3dSelf(scale: Double, originX: Double = noImpl /* 0.0 */, originY: Double = noImpl /* 0.0 */, originZ: Double = noImpl /* 0.0 */): DOMMatrix
-    fun scaleNonUniformSelf(scaleX: Double, scaleY: Double = noImpl /* 1.0 */, scaleZ: Double = noImpl /* 1.0 */, originX: Double = noImpl /* 0.0 */, originY: Double = noImpl /* 0.0 */, originZ: Double = noImpl /* 0.0 */): DOMMatrix
-    fun rotateSelf(angle: Double, originX: Double = noImpl /* 0.0 */, originY: Double = noImpl /* 0.0 */): DOMMatrix
+    fun translateSelf(tx: Double, ty: Double, tz: Double = noImpl): DOMMatrix
+    fun scaleSelf(scale: Double, originX: Double = noImpl, originY: Double = noImpl): DOMMatrix
+    fun scale3dSelf(scale: Double, originX: Double = noImpl, originY: Double = noImpl, originZ: Double = noImpl): DOMMatrix
+    fun scaleNonUniformSelf(scaleX: Double, scaleY: Double = noImpl, scaleZ: Double = noImpl, originX: Double = noImpl, originY: Double = noImpl, originZ: Double = noImpl): DOMMatrix
+    fun rotateSelf(angle: Double, originX: Double = noImpl, originY: Double = noImpl): DOMMatrix
     fun rotateFromVectorSelf(x: Double, y: Double): DOMMatrix
     fun rotateAxisAngleSelf(x: Double, y: Double, z: Double, angle: Double): DOMMatrix
     fun skewXSelf(sx: Double): DOMMatrix
@@ -3170,13 +3186,13 @@ public external open class DOMMatrix() : DOMMatrixReadOnly(noImpl) {
 }
 
 public external interface ScrollOptions {
-    var behavior: String? /* "auto" */
+    var behavior: String? /* = "auto" */
         get() = noImpl
         set(value) = noImpl
 }
 
 @Suppress("NOTHING_TO_INLINE")
-public inline fun ScrollOptions(behavior: String? = noImpl /* "auto" */): ScrollOptions {
+public inline fun ScrollOptions(behavior: String? = "auto"): ScrollOptions {
     val o = js("({})")
 
     o["behavior"] = behavior
@@ -3194,7 +3210,7 @@ public external interface ScrollToOptions : ScrollOptions {
 }
 
 @Suppress("NOTHING_TO_INLINE")
-public inline fun ScrollToOptions(left: Double?, top: Double?, behavior: String? = noImpl /* "auto" */): ScrollToOptions {
+public inline fun ScrollToOptions(left: Double?, top: Double?, behavior: String? = "auto"): ScrollToOptions {
     val o = js("({})")
 
     o["left"] = left
@@ -3214,22 +3230,22 @@ public external abstract class MediaQueryList : EventTarget() {
     fun removeListener(listener: ((Event) -> Unit)?): Unit
 }
 
-public external open class MediaQueryListEvent(type: String, eventInitDict: MediaQueryListEventInit = noImpl /* noImpl */) : Event(type, eventInitDict) {
+public external open class MediaQueryListEvent(type: String, eventInitDict: MediaQueryListEventInit = noImpl) : Event(type, eventInitDict) {
     open val media: String
     open val matches: Boolean
 }
 
 public external interface MediaQueryListEventInit : EventInit {
-    var media: String? /* "" */
+    var media: String? /* = "" */
         get() = noImpl
         set(value) = noImpl
-    var matches: Boolean? /* false */
+    var matches: Boolean? /* = false */
         get() = noImpl
         set(value) = noImpl
 }
 
 @Suppress("NOTHING_TO_INLINE")
-public inline fun MediaQueryListEventInit(media: String? = noImpl /* "" */, matches: Boolean? = noImpl /* false */, bubbles: Boolean? = noImpl /* false */, cancelable: Boolean? = noImpl /* false */, composed: Boolean? = noImpl /* false */): MediaQueryListEventInit {
+public inline fun MediaQueryListEventInit(media: String? = "", matches: Boolean? = false, bubbles: Boolean? = false, cancelable: Boolean? = false, composed: Boolean? = false): MediaQueryListEventInit {
     val o = js("({})")
 
     o["media"] = media
@@ -3257,16 +3273,16 @@ public external abstract class CaretPosition {
 }
 
 public external interface ScrollIntoViewOptions : ScrollOptions {
-    var block: String? /* "center" */
+    var block: String? /* = "center" */
         get() = noImpl
         set(value) = noImpl
-    var inline: String? /* "center" */
+    var inline: String? /* = "center" */
         get() = noImpl
         set(value) = noImpl
 }
 
 @Suppress("NOTHING_TO_INLINE")
-public inline fun ScrollIntoViewOptions(block: String? = noImpl /* "center" */, inline: String? = noImpl /* "center" */, behavior: String? = noImpl /* "auto" */): ScrollIntoViewOptions {
+public inline fun ScrollIntoViewOptions(block: String? = "center", inline: String? = "center", behavior: String? = "auto"): ScrollIntoViewOptions {
     val o = js("({})")
 
     o["block"] = block
@@ -3277,7 +3293,7 @@ public inline fun ScrollIntoViewOptions(block: String? = noImpl /* "center" */, 
 }
 
 public external interface BoxQuadOptions {
-    var box: String? /* "border" */
+    var box: String? /* = "border" */
         get() = noImpl
         set(value) = noImpl
     var relativeTo: dynamic
@@ -3286,7 +3302,7 @@ public external interface BoxQuadOptions {
 }
 
 @Suppress("NOTHING_TO_INLINE")
-public inline fun BoxQuadOptions(box: String? = noImpl /* "border" */, relativeTo: dynamic): BoxQuadOptions {
+public inline fun BoxQuadOptions(box: String? = "border", relativeTo: dynamic): BoxQuadOptions {
     val o = js("({})")
 
     o["box"] = box
@@ -3296,16 +3312,16 @@ public inline fun BoxQuadOptions(box: String? = noImpl /* "border" */, relativeT
 }
 
 public external interface ConvertCoordinateOptions {
-    var fromBox: String? /* "border" */
+    var fromBox: String? /* = "border" */
         get() = noImpl
         set(value) = noImpl
-    var toBox: String? /* "border" */
+    var toBox: String? /* = "border" */
         get() = noImpl
         set(value) = noImpl
 }
 
 @Suppress("NOTHING_TO_INLINE")
-public inline fun ConvertCoordinateOptions(fromBox: String? = noImpl /* "border" */, toBox: String? = noImpl /* "border" */): ConvertCoordinateOptions {
+public inline fun ConvertCoordinateOptions(fromBox: String? = "border", toBox: String? = "border"): ConvertCoordinateOptions {
     val o = js("({})")
 
     o["fromBox"] = fromBox
@@ -3315,10 +3331,10 @@ public inline fun ConvertCoordinateOptions(fromBox: String? = noImpl /* "border"
 }
 
 public external interface GeometryUtils {
-    fun getBoxQuads(options: BoxQuadOptions = noImpl /* noImpl */): Array<DOMQuad>
-    fun convertQuadFromNode(quad: dynamic, from: dynamic, options: ConvertCoordinateOptions = noImpl /* noImpl */): DOMQuad
-    fun convertRectFromNode(rect: DOMRectReadOnly, from: dynamic, options: ConvertCoordinateOptions = noImpl /* noImpl */): DOMQuad
-    fun convertPointFromNode(point: DOMPointInit, from: dynamic, options: ConvertCoordinateOptions = noImpl /* noImpl */): DOMPoint
+    fun getBoxQuads(options: BoxQuadOptions = noImpl): Array<DOMQuad>
+    fun convertQuadFromNode(quad: dynamic, from: dynamic, options: ConvertCoordinateOptions = noImpl): DOMQuad
+    fun convertRectFromNode(rect: DOMRectReadOnly, from: dynamic, options: ConvertCoordinateOptions = noImpl): DOMQuad
+    fun convertPointFromNode(point: DOMPointInit, from: dynamic, options: ConvertCoordinateOptions = noImpl): DOMPoint
 }
 
 public external @marker interface UnionElementOrProcessingInstruction {
