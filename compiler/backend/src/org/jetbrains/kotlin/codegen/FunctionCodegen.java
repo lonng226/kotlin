@@ -212,6 +212,8 @@ public class FunctionCodegen {
             parentBodyCodegen.addAdditionalTask(new JvmStaticGenerator(functionDescriptor, origin, state, parentBodyCodegen));
         }
 
+        FunctionCodegenUtilKt.addInnerClassesUsedInDescriptor(memberCodegen, functionDescriptor);
+
         if (!state.getClassBuilderMode().generateBodies || isAbstractMethod(functionDescriptor, contextKind, state)) {
             generateLocalVariableTable(
                     mv,

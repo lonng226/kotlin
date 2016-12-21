@@ -19,5 +19,5 @@ package org.jetbrains.kotlin.codegen
 import org.jetbrains.kotlin.descriptors.ClassDescriptor
 
 interface InnerClassConsumer {
-    fun addInnerClassInfoFromAnnotation(classDescriptor: ClassDescriptor)
+    fun addInnerClass(classDescriptor: ClassDescriptor)
 }

@@ -169,7 +169,14 @@ class ClassCodegen private constructor(val irClass: IrClass, val context: JvmBac
 
     // It's necessary for proper recovering of classId by plain string JVM descriptor when loading annotations
     // See FileBasedKotlinClass.convertAnnotationVisitor
-    override fun addInnerClassInfoFromAnnotation(classDescriptor: ClassDescriptor) {
+    // It's also required for scala compiler cause otherwise it can't find external nested classes
+    //
+    // According to JVMS 4.7.6:
+    // Every CONSTANT_Class_info entry in the constant_pool table which represents a class or interface C that is not a package member
+    // must have exactly one corresponding entry in the classes array.
+    // If a class has members that are classes or interfaces,
+    // its constant_pool table (and hence its InnerClasses attribute) must refer to each such member, even if that member is not otherwise mentioned by the class.
+    override fun addInnerClass(classDescriptor: ClassDescriptor) {
         var current: DeclarationDescriptor? = classDescriptor
         while (current != null && !isTopLevelDeclaration(current)) {
             if (current is ClassDescriptor) {

@@ -87,7 +87,7 @@ public abstract class AbstractWriteFlagsTest extends CodegenTestCase {
             }
 
             boolean isObjectExists = !Boolean.valueOf(findStringWithPrefixes(testedObject.textData, "// ABSENT: "));
-            assertEquals("Wrong object existence state: " + testedObject, isObjectExists, classVisitor.isExists());
+            assertEquals("Wrong object existence state: " + testedObject + " \n" + outputFile.asText(), isObjectExists, classVisitor.isExists());
 
             if (isObjectExists) {
                 assertEquals("Wrong access flag for " + testedObject + " \n" + outputFile.asText(),

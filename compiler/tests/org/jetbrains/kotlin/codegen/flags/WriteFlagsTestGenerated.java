@@ -625,6 +625,12 @@ public class WriteFlagsTestGenerated extends AbstractWriteFlagsTest {
                 KotlinTestUtils.assertAllTestsPresentByMetadata(this.getClass(), new File("compiler/testData/writeFlags/innerClass/visibility"), Pattern.compile("^(.+)\\.kt$"), TargetBackend.ANY, true);
             }
 
+            @TestMetadata("externalNested.kt")
+            public void testExternalNested() throws Exception {
+                String fileName = KotlinTestUtils.navigationMetadata("compiler/testData/writeFlags/innerClass/visibility/externalNested.kt");
+                doTest(fileName);
+            }
+
             @TestMetadata("internal.kt")
             public void testInternal() throws Exception {
                 String fileName = KotlinTestUtils.navigationMetadata("compiler/testData/writeFlags/innerClass/visibility/internal.kt");

@@ -288,7 +288,7 @@ public abstract class AnnotationCodegen {
         String descriptor = typeMapper.mapType(annotationDescriptor.getType()).getDescriptor();
 
         if (classifierDescriptor instanceof ClassDescriptor) {
-            innerClassConsumer.addInnerClassInfoFromAnnotation(((ClassDescriptor) classifierDescriptor));
+            innerClassConsumer.addInnerClass(((ClassDescriptor) classifierDescriptor));
         }
 
         AnnotationVisitor annotationVisitor = visitAnnotation(descriptor, rp == RetentionPolicy.RUNTIME);
