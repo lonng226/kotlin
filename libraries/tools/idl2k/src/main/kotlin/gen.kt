@@ -1,3 +1,19 @@
+/*
+ * Copyright 2010-2016 JetBrains s.r.o.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package org.jetbrains.idl2k
 
 private fun Operation.getterOrSetter() = this.attributes.map { it.call }.toSet().let { attributes ->
@@ -19,7 +35,7 @@ fun generateFunction(repository: Repository, function: Operation, functionName: 
                         GenerateAttribute(
                                 name = it.name,
                                 type = mappedType,
-                                initializer = mapLiteral(it.defaultValue, mappedType),
+                                initializer = if (it.defaultValue != null) "noImpl" else null,
                                 getterSetterNoImpl = false,
                                 override = false,
                                 kind = AttributeKind.ARGUMENT,
@@ -70,7 +86,16 @@ fun generateFunctions(repository: Repository, function: Operation): List<Generat
 fun generateAttribute(putNoImpl: Boolean, repository: Repository, attribute: Attribute, nullableAttributes: Boolean): GenerateAttribute =
         GenerateAttribute(attribute.name,
                 type = mapType(repository, attribute.type).let { if (nullableAttributes) it.toNullable() else it },
-                initializer = mapLiteral(attribute.defaultValue, mapType(repository, attribute.type)),
+                initializer =
+                    if (putNoImpl && !attribute.static) {
+                        mapLiteral(attribute.defaultValue, mapType(repository, attribute.type))
+                    }
+                    else if (attribute.defaultValue != null) {
+                        "noImpl"
+                    }
+                    else {
+                        null
+                    },
                 getterSetterNoImpl = putNoImpl,
                 kind = if (attribute.readOnly) AttributeKind.VAL else AttributeKind.VAR,
                 override = false,
@@ -93,7 +118,7 @@ private fun resolveDefinitionKind(repository: Repository, iface: InterfaceDefini
 private fun InterfaceDefinition.mapAttributes(repository: Repository)
         = attributes.map { generateAttribute(putNoImpl = dictionary, repository = repository, attribute = it, nullableAttributes = dictionary) }
 private fun InterfaceDefinition.mapOperations(repository: Repository) = operations.flatMap { generateFunctions(repository, it) }
-private fun Constant.mapConstant(repository : Repository) = GenerateAttribute(name, mapType(repository, type), value, false, AttributeKind.VAL, false, false, true)
+private fun Constant.mapConstant(repository : Repository) = GenerateAttribute(name, mapType(repository, type), null, false, AttributeKind.VAL, false, false, true)
 private val EMPTY_CONSTRUCTOR = ExtendedAttribute(null, "Constructor", emptyList())
 
 fun generateTrait(repository: Repository, iface: InterfaceDefinition): GenerateTraitOrClass {
