@@ -6,4 +6,4 @@ abstract class <!IMPLEMENTING_FUNCTION_INTERFACE!>A<!> : () -> Unit
 
 abstract class <!IMPLEMENTING_FUNCTION_INTERFACE!>C<!> : kotlin.Function1<Any, Int>
 
-abstract class D : C()
+abstract class <!IMPLEMENTING_FUNCTION_INTERFACE!>D<!> : C()

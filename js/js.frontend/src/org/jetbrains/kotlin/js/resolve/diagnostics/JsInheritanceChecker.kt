@@ -16,7 +16,6 @@
 
 package org.jetbrains.kotlin.js.resolve.diagnostics
 
-import org.jetbrains.kotlin.builtins.isBuiltinFunctionalType
 import org.jetbrains.kotlin.builtins.isBuiltinFunctionalTypeOrSubtype
 import org.jetbrains.kotlin.descriptors.ClassDescriptor
 import org.jetbrains.kotlin.descriptors.DeclarationDescriptor
@@ -53,7 +52,7 @@ object JsInheritanceChecker : SimpleDeclarationChecker {
         }
 
         if (descriptor is ClassDescriptor &&
-            descriptor.defaultType.immediateSupertypes().any { it.isBuiltinFunctionalType }
+            descriptor.defaultType.immediateSupertypes().any { it.isBuiltinFunctionalTypeOrSubtype }
         ) {
             diagnosticHolder.report(ErrorsJs.IMPLEMENTING_FUNCTION_INTERFACE.on(declaration as KtClassOrObject))
         }
