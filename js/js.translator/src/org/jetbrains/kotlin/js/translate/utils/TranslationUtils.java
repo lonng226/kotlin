@@ -38,10 +38,8 @@ import org.jetbrains.kotlin.psi.*;
 import org.jetbrains.kotlin.resolve.BindingContext;
 import org.jetbrains.kotlin.resolve.DescriptorUtils;
 import org.jetbrains.kotlin.resolve.calls.model.ResolvedCall;
-import org.jetbrains.kotlin.resolve.calls.model.ResolvedValueArgument;
 import org.jetbrains.kotlin.resolve.inline.InlineUtil;
 import org.jetbrains.kotlin.serialization.deserialization.FindClassInModuleKt;
-import org.jetbrains.kotlin.resolve.scopes.receivers.ImplicitReceiver;
 import org.jetbrains.kotlin.types.KotlinType;
 
 import java.util.ArrayList;
@@ -358,6 +356,13 @@ public final class TranslationUtils {
     public static FunctionDescriptor getCoroutineDoResumeFunction(@NotNull TranslationContext context) {
         return getCoroutineBaseClass(context).getUnsubstitutedMemberScope()
                 .getContributedFunctions(Name.identifier("doResume"), NoLookupLocation.FROM_DESERIALIZATION)
+                .iterator().next();
+    }
+
+    @NotNull
+    public static FunctionDescriptor getCoroutineResumeFunction(@NotNull TranslationContext context) {
+        return getCoroutineBaseClass(context).getUnsubstitutedMemberScope()
+                .getContributedFunctions(Name.identifier("resume"), NoLookupLocation.FROM_DESERIALIZATION)
                 .iterator().next();
     }
 }

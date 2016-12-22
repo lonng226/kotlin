@@ -122,6 +122,7 @@ class LiteralFunctionTranslator(context: TranslationContext) : AbstractTranslato
 
         coroutineMetadata = CoroutineMetadata(
                 doResumeName = context.getNameForDescriptor(TranslationUtils.getCoroutineDoResumeFunction(context)),
+                resumeName = context.getNameForDescriptor(TranslationUtils.getCoroutineResumeFunction(context)),
                 suspendObjectRef = ReferenceTranslator.translateAsValueReference(suspendPropertyDescriptor, context()),
                 baseClassRef = coroutineBaseClassRef,
                 stateName = context.getNameForDescriptor(TranslationUtils.getCoroutineProperty(context, "state")),
