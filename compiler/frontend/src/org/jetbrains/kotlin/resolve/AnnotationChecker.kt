@@ -41,7 +41,7 @@ class AnnotationChecker(private val additionalCheckers: Iterable<AdditionalAnnot
 
     fun check(annotated: KtAnnotated, trace: BindingTrace, descriptor: DeclarationDescriptor? = null) {
         val actualTargets = getActualTargetList(annotated, descriptor, trace)
-        checkEntries(annotated.annotationEntries, actualTargets, trace)
+        checkEntries(annotated.annotationEntries, actualTargets, trace, annotated)
         if (annotated is KtCallableDeclaration) {
             annotated.typeReference?.let { check(it, trace) }
             annotated.receiverTypeReference?.let { check(it, trace) }
@@ -78,7 +78,35 @@ class AnnotationChecker(private val additionalCheckers: Iterable<AdditionalAnnot
         }
     }
 
-    private fun checkEntries(entries: List<KtAnnotationEntry>, actualTargets: TargetList, trace: BindingTrace) {
+
+    private fun KtAnnotated?.getDefaultUseSiteTarget(allowedTargets: Set<KotlinTarget>): AnnotationUseSiteTarget? {
+        when (this) {
+            is KtParameter -> if (ownerFunction is KtPrimaryConstructor) {
+                return UseSiteTargetsList.T_CONSTRUCTOR_PARAMETER.firstOrNull {
+                    KotlinTarget.USE_SITE_MAPPING[it] in allowedTargets
+                }
+            }
+            is KtProperty -> if (!isLocal) {
+                return UseSiteTargetsList.T_PROPERTY.firstOrNull {
+                    KotlinTarget.USE_SITE_MAPPING[it] in allowedTargets
+                }
+            }
+            is KtPropertyAccessor -> if (isGetter && KotlinTarget.PROPERTY_GETTER in allowedTargets) {
+                return AnnotationUseSiteTarget.PROPERTY_GETTER
+            }
+            else if (isSetter && KotlinTarget.PROPERTY_SETTER in allowedTargets) {
+                return AnnotationUseSiteTarget.PROPERTY_SETTER
+            }
+        }
+        return null
+    }
+
+    private fun checkEntries(
+            entries: List<KtAnnotationEntry>,
+            actualTargets: TargetList,
+            trace: BindingTrace,
+            annotated: KtAnnotated? = null
+    ) {
         val entryTypesWithAnnotations = hashMapOf<KotlinType, MutableList<AnnotationUseSiteTarget?>>()
 
         for (entry in entries) {
@@ -87,6 +115,7 @@ class AnnotationChecker(private val additionalCheckers: Iterable<AdditionalAnnot
             val classDescriptor = TypeUtils.getClassDescriptor(descriptor.type) ?: continue
 
             val useSiteTarget = entry.useSiteTarget?.getAnnotationUseSiteTarget()
+                                ?: annotated.getDefaultUseSiteTarget(AnnotationChecker.applicableTargetSet(descriptor))
             val existingTargetsForAnnotation = entryTypesWithAnnotations.getOrPut(descriptor.type) { arrayListOf() }
             val duplicateAnnotation = useSiteTarget in existingTargetsForAnnotation
                                       || (existingTargetsForAnnotation.any { (it == null) != (useSiteTarget == null) })
@@ -332,6 +361,15 @@ class AnnotationChecker(private val additionalCheckers: Iterable<AdditionalAnnot
                 val defaultTargets: List<KotlinTarget>,
                 val canBeSubstituted: List<KotlinTarget> = emptyList(),
                 val onlyWithUseSiteTarget: List<KotlinTarget> = emptyList())
+
+        private object UseSiteTargetsList {
+            val T_CONSTRUCTOR_PARAMETER = listOf(AnnotationUseSiteTarget.CONSTRUCTOR_PARAMETER,
+                                                 AnnotationUseSiteTarget.PROPERTY,
+                                                 AnnotationUseSiteTarget.FIELD)
+
+            val T_PROPERTY = listOf(AnnotationUseSiteTarget.PROPERTY,
+                                    AnnotationUseSiteTarget.FIELD)
+        }
     }
 }
 
