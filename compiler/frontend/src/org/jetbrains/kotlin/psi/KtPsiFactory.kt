@@ -480,6 +480,9 @@ class KtPsiFactory(private val project: Project) {
         fun modifier(modifier: String): ClassHeaderBuilder {
             assert(state == State.MODIFIERS)
 
+            if (sb.isNotEmpty()) {
+                sb.append(" ")
+            }
             sb.append(modifier)
 
             return this
@@ -532,6 +535,12 @@ class KtPsiFactory(private val project: Project) {
 
             state = State.TYPE_CONSTRAINTS
 
+            return this
+        }
+
+        fun noBaseClass(): ClassHeaderBuilder {
+            assert(state == State.BASE_CLASS)
+            state = State.TYPE_CONSTRAINTS
             return this
         }
 
