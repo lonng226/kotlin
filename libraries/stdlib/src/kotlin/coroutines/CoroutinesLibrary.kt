@@ -2,8 +2,8 @@
 @file:kotlin.jvm.JvmVersion
 package kotlin.coroutines
 
-import java.util.concurrent.atomic.AtomicReferenceFieldUpdater
 import java.lang.IllegalStateException
+import java.util.concurrent.atomic.AtomicReferenceFieldUpdater
 import kotlin.coroutines.CoroutineIntrinsics.SUSPENDED
 
 /**
@@ -34,7 +34,7 @@ public fun <R, T> (suspend R.() -> T).startCoroutine(
         completion: Continuation<T>,
         dispatcher: ContinuationDispatcher? = null
 ) {
-    (this as Function2<R, Continuation<T>, Any?>).invoke(receiver, withDispatcher(completion, dispatcher))
+    createCoroutine(receiver, completion, dispatcher).resume(Unit)
 }
 
 /**
@@ -63,7 +63,7 @@ public fun <T> (suspend  () -> T).startCoroutine(
         completion: Continuation<T>,
         dispatcher: ContinuationDispatcher? = null
 ) {
-    (this as Function1<Continuation<T>, Any?>).invoke(withDispatcher(completion, dispatcher))
+    createCoroutine(completion, dispatcher).resume(Unit)
 }
 
 /**

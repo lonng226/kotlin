@@ -23,6 +23,7 @@ import org.jetbrains.kotlin.descriptors.impl.FunctionDescriptorImpl
 import org.jetbrains.kotlin.descriptors.impl.SimpleFunctionDescriptorImpl
 import org.jetbrains.kotlin.descriptors.impl.ValueParameterDescriptorImpl
 import org.jetbrains.kotlin.name.Name
+import org.jetbrains.kotlin.types.KotlinType
 import org.jetbrains.kotlin.types.TypeSubstitutor
 import org.jetbrains.kotlin.types.Variance
 import org.jetbrains.kotlin.util.OperatorNameConventions
@@ -93,6 +94,10 @@ class FunctionInvokeDescriptor private constructor(
                 .setOriginal(original)
 
         return super.doSubstitute(copyConfiguration)!!
+    }
+
+    override fun initialize(receiverParameterType: KotlinType?, dispatchReceiverParameter: ReceiverParameterDescriptor?, typeParameters: List<out TypeParameterDescriptor>, unsubstitutedValueParameters: List<ValueParameterDescriptor>, unsubstitutedReturnType: KotlinType?, modality: Modality?, visibility: Visibility): SimpleFunctionDescriptorImpl {
+        return super.initialize(receiverParameterType, dispatchReceiverParameter, typeParameters, unsubstitutedValueParameters, unsubstitutedReturnType, modality, visibility)
     }
 
     companion object Factory {

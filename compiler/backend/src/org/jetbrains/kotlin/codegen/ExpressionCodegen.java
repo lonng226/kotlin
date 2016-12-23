@@ -91,7 +91,6 @@ import org.jetbrains.kotlin.synthetic.SyntheticJavaPropertyDescriptor;
 import org.jetbrains.kotlin.types.KotlinType;
 import org.jetbrains.kotlin.types.TypeProjection;
 import org.jetbrains.kotlin.types.TypeUtils;
-import org.jetbrains.kotlin.types.checker.KotlinTypeChecker;
 import org.jetbrains.kotlin.types.expressions.DoubleColonLHS;
 import org.jetbrains.kotlin.types.typesApproximation.CapturedTypeApproximationKt;
 import org.jetbrains.kotlin.util.OperatorNameConventions;
@@ -184,7 +183,7 @@ public class ExpressionCodegen extends KtVisitor<StackValue, StackValue> impleme
         if (originalCoroutineDescriptor != null) return originalCoroutineDescriptor;
 
         if (context.getFunctionDescriptor().isSuspend()) {
-            return (FunctionDescriptor) CoroutineCodegenUtilKt.unwrapInitialDescriptorForSuspendFunction(context.getFunctionDescriptor());
+            return CoroutineCodegenUtilKt.unwrapInitialDescriptorForSuspendFunction(context.getFunctionDescriptor());
         }
 
         return null;
@@ -194,7 +193,7 @@ public class ExpressionCodegen extends KtVisitor<StackValue, StackValue> impleme
     private static FunctionDescriptor getOriginalCoroutineDescriptor(MethodContext context) {
         if ((context.getParentContext() instanceof ClosureContext) &&
             (context.getParentContext().closure != null) &&
-            context.getParentContext().closure.isCoroutine()) {
+            context.getParentContext().closure.isSuspend()) {
             return ((ClosureContext) context.getParentContext()).getCoroutineDescriptor();
         }
 
@@ -1651,7 +1650,7 @@ public class ExpressionCodegen extends KtVisitor<StackValue, StackValue> impleme
                 declaration.getContainingFile()
         );
 
-        ClosureCodegen coroutineCodegen = CoroutineCodegen.create(this, descriptor, declaration, cv);
+        ClosureCodegen coroutineCodegen = CoroutineCodegen.createByLambda(this, descriptor, declaration, cv);
         ClosureCodegen closureCodegen = coroutineCodegen != null ? coroutineCodegen : new ClosureCodegen(
                 state, declaration, samType, context.intoClosure(descriptor, this, typeMapper),
                 functionReferenceTarget, strategy, parentCodegen, cv
@@ -1659,6 +1658,14 @@ public class ExpressionCodegen extends KtVisitor<StackValue, StackValue> impleme
 
         closureCodegen.generate();
 
+        return putClosureInstanceOnStack(closureCodegen, functionReferenceReceiver);
+    }
+
+    @NotNull
+    public StackValue putClosureInstanceOnStack(
+            @NotNull ClosureCodegen closureCodegen,
+            @Nullable StackValue functionReferenceReceiver
+    ) {
         if (closureCodegen.getReifiedTypeParametersUsages().wereUsedReifiedParameters()) {
             ReifiedTypeInliner.putNeedClassReificationMarker(v);
             propagateChildReifiedTypeParametersUsages(closureCodegen.getReifiedTypeParametersUsages());
@@ -1771,9 +1778,20 @@ public class ExpressionCodegen extends KtVisitor<StackValue, StackValue> impleme
             );
         }
 
-        if (closure.isCoroutine()) {
+        if (closure.isSuspend()) {
             // resultContinuation
-            v.aconst(null);
+            if (closure.isSuspendLambda()) {
+                v.aconst(null);
+            }
+            else {
+                assert context.getFunctionDescriptor().isSuspend() : "Coroutines closure must be created only inside suspend functions";
+                ValueParameterDescriptor continuationParameter = CollectionsKt.last(context.getFunctionDescriptor().getValueParameters());
+                StackValue continuationValue = findLocalOrCapturedValue(continuationParameter);
+
+                assert continuationValue != null : "Couldn't find a value for continuation parameter of " + context.getFunctionDescriptor();
+
+                callGenerator.putCapturedValueOnStack(continuationValue, continuationValue.type, paramIndex++);
+            }
         }
     }
 
@@ -1872,16 +1890,17 @@ public class ExpressionCodegen extends KtVisitor<StackValue, StackValue> impleme
     @Nullable
     private StackValue getCoroutineInstanceValueForSuspensionPoint(@NotNull ResolvedCall<?> resolvedCall) {
         CallableDescriptor enclosingSuspendLambdaForSuspensionPoint =
-                bindingContext.get(ENCLOSING_SUSPEND_LAMBDA_FOR_SUSPENSION_POINT, resolvedCall.getCall());
+                bindingContext.get(ENCLOSING_SUSPEND_FUNCTION_FOR_SUSPENSION_POINT, resolvedCall.getCall());
 
         if (enclosingSuspendLambdaForSuspensionPoint == null) return null;
-        return genCoroutineInstanceByLambda(enclosingSuspendLambdaForSuspensionPoint);
+        return genCoroutineInstanceBySuspendFunction(enclosingSuspendLambdaForSuspensionPoint);
     }
 
     @NotNull
-    private StackValue genCoroutineInstanceByLambda(@NotNull CallableDescriptor suspendLambda) {
+    private StackValue genCoroutineInstanceBySuspendFunction(@NotNull CallableDescriptor suspendFunction) {
+        CallableDescriptor invokeDescriptor = bindingContext.get(CodegenBinding.SUSPEND_NAMED_FUNCTION_TO_INVOKE_DESCRIPTOR, suspendFunction);
         ClassDescriptor suspendLambdaClassDescriptor =
-                bindingContext.get(CodegenBinding.CLASS_FOR_CALLABLE, suspendLambda);
+                bindingContext.get(CodegenBinding.CLASS_FOR_CALLABLE, invokeDescriptor != null ? invokeDescriptor : suspendFunction);
         assert suspendLambdaClassDescriptor != null : "Coroutine class descriptor should not be null";
 
         return StackValue.thisOrOuter(this, suspendLambdaClassDescriptor, false, false);
@@ -2231,7 +2250,7 @@ public class ExpressionCodegen extends KtVisitor<StackValue, StackValue> impleme
     @NotNull
     private Type getReturnTypeForNonLocalReturn(DeclarationDescriptor elementDescriptor) {
         return (elementDescriptor instanceof AnonymousFunctionDescriptor
-            && ((AnonymousFunctionDescriptor) elementDescriptor).isCoroutine())
+            && ((AnonymousFunctionDescriptor) elementDescriptor).isSuspend())
             || (elementDescriptor instanceof FunctionDescriptor && ((FunctionDescriptor) elementDescriptor).isSuspend())
         ? getBoxedReturnTypeForSuspend((FunctionDescriptor) elementDescriptor)
         : typeMapper.mapReturnType((CallableDescriptor) elementDescriptor);

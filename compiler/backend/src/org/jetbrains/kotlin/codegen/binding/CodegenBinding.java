@@ -69,6 +69,9 @@ public class CodegenBinding {
     public static final WritableSlice<SimpleFunctionDescriptor, SimpleFunctionDescriptor> SUSPEND_FUNCTION_TO_JVM_VIEW =
             Slices.createSimpleSlice();
 
+    public static final WritableSlice<CallableDescriptor, FunctionDescriptor> SUSPEND_NAMED_FUNCTION_TO_INVOKE_DESCRIPTOR =
+            Slices.createSimpleSlice();
+
     public static final WritableSlice<ValueParameterDescriptor, ValueParameterDescriptor> PARAMETER_SYNONYM =
             Slices.createSimpleSlice();
 
