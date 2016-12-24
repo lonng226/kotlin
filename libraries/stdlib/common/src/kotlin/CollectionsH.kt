@@ -154,3 +154,8 @@ header fun <T> MutableList<T>.sortWith(comparator: Comparator<in T>): Unit
 
 // from Maps.kt
 header operator fun <K, V> MutableMap<K, V>.set(key: K, value: V): Unit
+
+
+internal header fun copyToArrayImpl(collection: Collection<*>): Array<Any?>
+
+internal header fun <T> copyToArrayImpl(collection: Collection<*>, array: Array<T>): Array<T>
