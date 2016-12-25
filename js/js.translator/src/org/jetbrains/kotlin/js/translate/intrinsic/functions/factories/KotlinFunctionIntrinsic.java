@@ -18,6 +18,7 @@ package org.jetbrains.kotlin.js.translate.intrinsic.functions.factories;
 
 import com.google.dart.compiler.backend.js.ast.JsExpression;
 import com.google.dart.compiler.backend.js.ast.JsInvocation;
+import kotlin.collections.CollectionsKt;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.kotlin.js.translate.context.Namer;
@@ -31,9 +32,11 @@ import java.util.List;
 public class KotlinFunctionIntrinsic extends FunctionIntrinsic {
     @NotNull
     private final String functionName;
+    private final JsExpression[] additionalArguments;
 
-    public KotlinFunctionIntrinsic(@NotNull String functionName) {
+    public KotlinFunctionIntrinsic(@NotNull String functionName, JsExpression... additionalArguments) {
         this.functionName = functionName;
+        this.additionalArguments = additionalArguments;
     }
 
     @NotNull
@@ -44,6 +47,9 @@ public class KotlinFunctionIntrinsic extends FunctionIntrinsic {
             @NotNull TranslationContext context
     ) {
         JsExpression function = JsAstUtils.pureFqn(functionName, Namer.kotlinObject());
+        if (additionalArguments.length > 0) {
+            arguments = CollectionsKt.plus(arguments, additionalArguments);
+        }
         return new JsInvocation(function, receiver == null ? arguments : TranslationUtils.generateInvocationArguments(receiver, arguments));
     }
 }

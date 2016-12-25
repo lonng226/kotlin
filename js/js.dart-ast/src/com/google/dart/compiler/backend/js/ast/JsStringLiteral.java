@@ -5,6 +5,7 @@
 package com.google.dart.compiler.backend.js.ast;
 
 public final class JsStringLiteral extends JsLiteral.JsValueLiteral {
+    public static final JsStringLiteral CHAR_ZERO = new JsStringLiteral("\0");
 
     private final String value;
 
