@@ -2923,12 +2923,6 @@ public class BoxJsTestGenerated extends AbstractBoxJsTest {
                 doTest(fileName);
             }
 
-            @TestMetadata("stringSplit.kt")
-            public void testStringSplit() throws Exception {
-                String fileName = KotlinTestUtils.navigationMetadata("js/js.translator/testData/box/expression/stringClass/stringSplit.kt");
-                doTest(fileName);
-            }
-
             @TestMetadata("subSequence.kt")
             public void testSubSequence() throws Exception {
                 String fileName = KotlinTestUtils.navigationMetadata("js/js.translator/testData/box/expression/stringClass/subSequence.kt");
