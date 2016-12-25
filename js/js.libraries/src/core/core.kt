@@ -8,14 +8,9 @@ public external fun eval(expr: String): dynamic = noImpl
 public external val undefined: Nothing? = noImpl
 
 
-//TODO: consistent parseInt
-public external fun parseInt(s: String, radix: Int = 10): Int = noImpl
+public external fun parseInt(s: String, radix: Int = 10): Int
 
-@library
-public fun safeParseInt(s: String): Int? = noImpl
-
-@library
-public fun safeParseDouble(s: String): Double? = noImpl
+public external fun parseFloat(s: String, radix: Int = 10): Double
 
 public external fun js(code: String): dynamic = noImpl
 
