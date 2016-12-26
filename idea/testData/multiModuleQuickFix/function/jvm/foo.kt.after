@@ -1,0 +1,5 @@
+// foo: to be implemented
+
+impl fun foo(arg: Int): String {
+    TODO("")
+}
