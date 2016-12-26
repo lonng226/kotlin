@@ -70,8 +70,10 @@ import org.jetbrains.kotlin.resolve.calls.context.ContextDependency
 import org.jetbrains.kotlin.resolve.descriptorUtil.fqNameSafe
 import org.jetbrains.kotlin.resolve.jvm.platform.JvmPlatform
 import org.jetbrains.kotlin.resolve.lazy.BodyResolveMode
+import org.jetbrains.kotlin.resolve.scopes.DescriptorKindFilter
 import org.jetbrains.kotlin.resolve.scopes.ExplicitImportsScope
 import org.jetbrains.kotlin.resolve.scopes.utils.addImportingScope
+import org.jetbrains.kotlin.resolve.scopes.utils.collectAllFromImportingScopes
 import org.jetbrains.kotlin.resolve.scopes.utils.collectFunctions
 import org.jetbrains.kotlin.util.OperatorNameConventions
 import org.jetbrains.kotlin.utils.CachedValueProperty
@@ -506,10 +508,12 @@ internal class ImportForMismatchingArgumentsFix(
         val resolutionFacade = file.getResolutionFacade()
         val resolutionScope = elementToAnalyze.getResolutionScope(bindingContext, resolutionFacade)
 
+        val imported = resolutionScope.collectFunctions(identifier, NoLookupLocation.FROM_IDE)
+
         fun filterFunction(descriptor: FunctionDescriptor): Boolean {
             if (!callTypeAndReceiver.callType.descriptorKindFilter.accepts(descriptor)) return false
 
-            if (descriptor in resolutionScope.collectFunctions(identifier, NoLookupLocation.FROM_IDE)) return false // already imported
+            if (descriptor.original in imported) return false // already imported
 
             // check that this function matches all arguments
             val resolutionScopeWithAddedImport = resolutionScope.addImportingScope(ExplicitImportsScope(listOf(descriptor)))
