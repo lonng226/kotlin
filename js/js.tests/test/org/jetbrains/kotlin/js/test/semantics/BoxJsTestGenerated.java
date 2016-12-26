@@ -1382,6 +1382,12 @@ public class BoxJsTestGenerated extends AbstractBoxJsTest {
             doTest(fileName);
         }
 
+        @TestMetadata("propertySideEffect.kt")
+        public void testPropertySideEffect() throws Exception {
+            String fileName = KotlinTestUtils.navigationMetadata("js/js.translator/testData/box/dynamic/propertySideEffect.kt");
+            doTest(fileName);
+        }
+
         @TestMetadata("setByBrackets.kt")
         public void testSetByBrackets() throws Exception {
             String fileName = KotlinTestUtils.navigationMetadata("js/js.translator/testData/box/dynamic/setByBrackets.kt");
