@@ -120,7 +120,7 @@ class NameSuggestion {
                         var liftedName = ownName
                         var hasInline = false
                         while (container is FunctionDescriptor) {
-                            if (container.isInline && container.visibility.isPublicAPI) {
+                            if (container.isInline && container.isEffectivelyPublic) {
                                 hasInline = true
                             }
                             liftedName = getSuggestedName(container) + "$" + liftedName
@@ -259,13 +259,13 @@ class NameSuggestion {
 
             val containingDeclaration = descriptor.containingDeclaration
             return when (containingDeclaration) {
-                is PackageFragmentDescriptor -> if (descriptor.visibility.isPublicAPI) mangledAndStable() else regularAndUnstable()
+                is PackageFragmentDescriptor -> if (descriptor.isEffectivelyPublic) mangledAndStable() else regularAndUnstable()
                 is ClassDescriptor -> {
                     // valueOf() is created in the library with a mangled name for every enum class
                     if (descriptor is FunctionDescriptor && descriptor.isEnumValueOfMethod()) return mangledAndStable()
 
                     // Make all public declarations stable
-                    if (descriptor.visibility == Visibilities.PUBLIC) return mangledAndStable()
+                    if (descriptor.visibility != Visibilities.PROTECTED && descriptor.isEffectivelyPublic) return mangledAndStable()
 
                     if (descriptor is CallableMemberDescriptor && descriptor.isOverridableOrOverrides) return mangledAndStable()
 
@@ -323,5 +323,8 @@ class NameSuggestion {
             val absHashCode = Math.abs(forCalculateId.hashCode())
             return if (absHashCode != 0) Integer.toString(absHashCode, Character.MAX_RADIX) else ""
         }
+
+        private val DeclarationDescriptorWithVisibility.isEffectivelyPublic
+            get() = effectiveVisibility(checkPublishedApi = true).publicApi
     }
 }
