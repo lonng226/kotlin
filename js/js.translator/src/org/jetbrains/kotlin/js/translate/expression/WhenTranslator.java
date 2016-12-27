@@ -19,6 +19,9 @@ package org.jetbrains.kotlin.js.translate.expression;
 import com.google.dart.compiler.backend.js.ast.*;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.kotlin.backend.common.CodegenUtil;
+import org.jetbrains.kotlin.builtins.KotlinBuiltIns;
+import org.jetbrains.kotlin.js.translate.context.Namer;
 import org.jetbrains.kotlin.js.translate.context.TranslationContext;
 import org.jetbrains.kotlin.js.translate.general.AbstractTranslator;
 import org.jetbrains.kotlin.js.translate.general.Translation;
@@ -28,6 +31,8 @@ import org.jetbrains.kotlin.js.translate.utils.JsAstUtils;
 import org.jetbrains.kotlin.lexer.KtTokens;
 import org.jetbrains.kotlin.psi.*;
 import org.jetbrains.kotlin.psi.psiUtil.PsiUtilsKt;
+import org.jetbrains.kotlin.resolve.BindingContext;
+import org.jetbrains.kotlin.resolve.bindingContextUtil.BindingContextUtilsKt;
 import org.jetbrains.kotlin.types.KotlinType;
 
 import java.util.HashMap;
@@ -85,7 +90,19 @@ public final class WhenTranslator extends AbstractTranslator {
                 currentIf = nextIf;
             }
         }
+
+        JsExpression noWhenMatchedInvocation = new JsInvocation(JsAstUtils.pureFqn("noWhenBranchMatched", Namer.kotlinObject()));
+        if (currentIf != null && currentIf.getElseStatement() == null && isExhaustive()) {
+            currentIf.setElseStatement(JsAstUtils.asSyntheticStatement(noWhenMatchedInvocation));
+        }
+
         return resultIf != null ? resultIf : JsLiteral.NULL;
+    }
+
+    private boolean isExhaustive() {
+        KotlinType type = bindingContext().getType(whenExpression);
+        boolean isStatement = type != null && KotlinBuiltIns.isUnit(type) && !type.isMarkedNullable();
+        return CodegenUtil.isExhaustive(bindingContext(), whenExpression, isStatement);
     }
 
     @NotNull
