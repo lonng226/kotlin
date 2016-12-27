@@ -1608,16 +1608,16 @@ public abstract interface class kotlin/collections/Grouping {
 public final class kotlin/collections/GroupingKt {
 	public static final fun aggregate (Lkotlin/collections/Grouping;Lkotlin/jvm/functions/Function4;)Ljava/util/Map;
 	public static final fun aggregateTo (Lkotlin/collections/Grouping;Ljava/util/Map;Lkotlin/jvm/functions/Function4;)Ljava/util/Map;
-	public static final fun countEach (Lkotlin/collections/Grouping;)Ljava/util/Map;
-	public static final fun countEachTo (Lkotlin/collections/Grouping;Ljava/util/Map;)Ljava/util/Map;
+	public static final fun eachCount (Lkotlin/collections/Grouping;)Ljava/util/Map;
+	public static final fun eachCountTo (Lkotlin/collections/Grouping;Ljava/util/Map;)Ljava/util/Map;
+	public static final fun eachSumOf (Lkotlin/collections/Grouping;Lkotlin/jvm/functions/Function1;)Ljava/util/Map;
+	public static final fun eachSumOfTo (Lkotlin/collections/Grouping;Ljava/util/Map;Lkotlin/jvm/functions/Function1;)Ljava/util/Map;
 	public static final fun fold (Lkotlin/collections/Grouping;Ljava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/util/Map;
 	public static final fun fold (Lkotlin/collections/Grouping;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function3;)Ljava/util/Map;
 	public static final fun foldTo (Lkotlin/collections/Grouping;Ljava/util/Map;Ljava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/util/Map;
 	public static final fun foldTo (Lkotlin/collections/Grouping;Ljava/util/Map;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function3;)Ljava/util/Map;
 	public static final fun reduce (Lkotlin/collections/Grouping;Lkotlin/jvm/functions/Function3;)Ljava/util/Map;
 	public static final fun reduceTo (Lkotlin/collections/Grouping;Ljava/util/Map;Lkotlin/jvm/functions/Function3;)Ljava/util/Map;
-	public static final fun sumEachBy (Lkotlin/collections/Grouping;Lkotlin/jvm/functions/Function1;)Ljava/util/Map;
-	public static final fun sumEachByTo (Lkotlin/collections/Grouping;Ljava/util/Map;Lkotlin/jvm/functions/Function1;)Ljava/util/Map;
 }
 
 public final class kotlin/collections/IndexedValue {
