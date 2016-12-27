@@ -20,7 +20,7 @@ package kotlin.collections
  *
  * @return a [Map] associating the key of each group with the count of element in the group.
  */
-public fun <T, K> Grouping<T, K>.countEach(): Map<K, Int> =
+public fun <T, K> Grouping<T, K>.eachCount(): Map<K, Int> =
         fold(0) { acc, e -> acc + 1 }
 
 /**
@@ -28,5 +28,5 @@ public fun <T, K> Grouping<T, K>.countEach(): Map<K, Int> =
  *
  * @return a [Map] associating the key of each group with the count of element in the group.
  */
-public inline fun <T, K> Grouping<T, K>.sumEachBy(valueSelector: (T) -> Int): Map<K, Int> =
+public inline fun <T, K> Grouping<T, K>.eachSumOf(valueSelector: (T) -> Int): Map<K, Int> =
         fold(0) { acc, e -> acc + valueSelector(e) }
