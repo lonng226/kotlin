@@ -88,12 +88,12 @@ class GroupingTest {
 
     @Test fun countEach() {
         val elements = listOf("foo", "bar", "flea", "zoo", "biscuit")
-        val counts = elements.groupingBy { it.first() }.countEach()
+        val counts = elements.groupingBy { it.first() }.eachCount()
 
         assertEquals(mapOf('f' to 2, 'b' to 2, 'z' to 1), counts)
 
         val elements2 = arrayOf("zebra", "baz", "cab")
-        val counts2 = elements2.groupingBy { it.last() }.countEachTo(HashMap(counts))
+        val counts2 = elements2.groupingBy { it.last() }.eachCountTo(HashMap(counts))
 
         assertEquals(mapOf('f' to 2, 'b' to 3, 'a' to 1, 'z' to 2), counts2)
     }
@@ -101,12 +101,12 @@ class GroupingTest {
 
     @Test fun sumEach() {
         val values = listOf("k" to 50, "b" to 20, "k" to 1000 )
-        val summary = values.groupingBy { it.first }.sumEachBy { it.second }
+        val summary = values.groupingBy { it.first }.eachSumOf { it.second }
 
         assertEquals(mapOf("k" to 1050, "b" to 20), summary)
 
         val values2 = listOf("key", "ball", "builder", "alpha")
-        val summary2 = values2.groupingBy { it.first().toString() }.sumEachByTo(HashMap(summary)) { it.length }
+        val summary2 = values2.groupingBy { it.first().toString() }.eachSumOfTo(HashMap(summary)) { it.length }
 
         assertEquals(mapOf("k" to 1053, "b" to 31, "a" to 5), summary2)
     }

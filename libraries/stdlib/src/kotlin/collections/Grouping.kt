@@ -210,7 +210,7 @@ public inline fun <S, T : S, K, M : MutableMap<in K, S>> Grouping<T, K>.reduceTo
  * @return a [Map] associating the key of each group with the count of element in the group.
  */
 @JvmVersion
-public fun <T, K> Grouping<T, K>.countEach(): Map<K, Int> =
+public fun <T, K> Grouping<T, K>.eachCount(): Map<K, Int> =
         // fold(0) { acc, e -> acc + 1 } optimized for boxing
         fold(
                 initialValueSelector = { k, e -> kotlin.jvm.internal.Ref.IntRef() },
@@ -222,7 +222,7 @@ public fun <T, K> Grouping<T, K>.countEach(): Map<K, Int> =
  *
  * @return the [destination] map associating the key of each group with the count of element in the group.
  */
-public fun <T, K, M : MutableMap<in K, Int>> Grouping<T, K>.countEachTo(destination: M): M =
+public fun <T, K, M : MutableMap<in K, Int>> Grouping<T, K>.eachCountTo(destination: M): M =
         foldTo(destination, 0) { acc, e -> acc + 1 }
 
 /**
@@ -231,7 +231,7 @@ public fun <T, K, M : MutableMap<in K, Int>> Grouping<T, K>.countEachTo(destinat
  * @return a [Map] associating the key of each group with the count of element in the group.
  */
 @JvmVersion
-public inline fun <T, K> Grouping<T, K>.sumEachBy(valueSelector: (T) -> Int): Map<K, Int> =
+public inline fun <T, K> Grouping<T, K>.eachSumOf(valueSelector: (T) -> Int): Map<K, Int> =
         // fold(0) { acc, e -> acc + valueSelector(e)} optimized for boxing
         fold(
                 initialValueSelector = { k, e -> kotlin.jvm.internal.Ref.IntRef() },
@@ -244,7 +244,7 @@ public inline fun <T, K> Grouping<T, K>.sumEachBy(valueSelector: (T) -> Int): Ma
  *
  * @return the [destination] map associating the key of each group with the count of element in the group.
  */
-public inline fun <T, K, M : MutableMap<in K, Int>> Grouping<T, K>.sumEachByTo(destination: M, valueSelector: (T) -> Int): M =
+public inline fun <T, K, M : MutableMap<in K, Int>> Grouping<T, K>.eachSumOfTo(destination: M, valueSelector: (T) -> Int): M =
         foldTo(destination, 0) { acc, e -> acc + valueSelector(e)}
 
 
