@@ -407,13 +407,11 @@ public abstract class MemberCodegen<T extends KtPureElement/* TODO: & KtDeclarat
                 return null;
             }
 
-            boolean isJava6InterfaceMember = isInterface(functionDescriptor.getContainingDeclaration()) && !isJvm8InterfaceMember(functionDescriptor, state);
-            OwnerKind kind = isJava6InterfaceMember ? OwnerKind.DEFAULT_IMPLS : context.getContextKind();
             if (((MethodContext) context).isDefaultFunctionContext()) {
-                return typeMapper.mapDefaultMethod(functionDescriptor, kind);
+                return typeMapper.mapDefaultMethod(functionDescriptor, context.getContextKind());
             }
 
-            return typeMapper.mapAsmMethod(functionDescriptor, kind);
+            return typeMapper.mapAsmMethod(functionDescriptor, context.getContextKind());
 
         }
         return null;
